@@ -1,0 +1,6 @@
+.blog-card.recommended-card{background-color:#f5f8fd;border-radius:.75rem;display:flex;flex-direction:column;width:30%;margin:0
+.5rem}.blog-thumbnail
+img{width:100%;height:150px;border-radius:8px}.blog-content{padding:1rem;display:flex;flex-direction:column;flex-grow:1}.revamp-page-template .blogs-webinar-section .webinar-title-blog{font-size:18px;font-weight:700;color:#1a1f38;margin-bottom:1rem;text-wrap:auto;display:-webkit-box;max-width:100%;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;height:75px;line-height:26px}.blogs-webinar-section .blog-thumbnail
+img{width:100%;object-fit:cover}@media (max-width:767px){.blog-card.recommended-card{background-color:#f5f8fd;border-radius:.75rem;display:inline-block;width:17.5rem;margin:0
+.5rem}.blogs-webinar-section .blog-thumbnail
+img{width:280px}}

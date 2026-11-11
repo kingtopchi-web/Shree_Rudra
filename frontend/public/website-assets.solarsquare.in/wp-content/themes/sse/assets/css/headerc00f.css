@@ -1,0 +1,1177 @@
+.navbar {
+    height: 5rem;
+    background-color: #fff !important;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+}
+.navbar .navbar-toggler i:before {
+    font-size: 1.5rem;
+}
+.navbar .navbar-brand img {
+    width: auto;
+}
+.navbar .navbar-nav .nav-item {
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+    color: #0b131f;
+    font-family: Poppins;
+    font-weight: 500;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu {
+    border-color: transparent !important;
+    top: 85%;
+    width: 11rem;
+    box-shadow: 0 4px 4px rgb(0 0 0 / .25);
+}
+.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    font-family: Poppins;
+    padding: .6rem 1rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    color: #fff;
+    background-color: #0905a1;
+}
+.navbar .nav-other-actions {
+    align-items: center;
+}
+/* Header language switcher (sse_language_switcher_html in functions.php). */
+.lang-switcher__icon {
+    flex-shrink: 0;
+    color: #182150;
+}
+.lang-switcher--desktop {
+    margin-right: 16px;
+}
+.lang-switcher--desktop .lang-switcher__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    border: 0;
+    background: transparent;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0b131f;
+}
+.lang-switcher--desktop .dropdown-menu {
+    min-width: 9rem;
+    border-color: transparent;
+    box-shadow: 0 0 12px 0 #0000001f;
+    padding:10px 8px;
+    gap: 10px;
+}
+/* Grid only when open, so Bootstrap's closed-state display:none still applies. */
+.lang-switcher--desktop .dropdown-menu.show {
+    display: grid;
+}
+.lang-switcher--desktop .dropdown-menu li{
+        background: #f5f8fd;
+    border-radius: 8px;
+}
+.lang-switcher--desktop .dropdown-item {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+.lang-switcher--desktop .dropdown-item:hover,
+.lang-switcher--desktop .dropdown-item.active {
+       color: #2c3045;
+   background-color: transparent;
+}
+.offcanvas-body .lang-switcher--mobile {
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.lang-switcher--mobile {
+    padding: 12px;
+    background-color: #eef3fd;
+    border: 1px solid #d9e4f8;
+    border-radius: 8px;
+}
+/* .container adds horizontal padding; keep the card's own padding inside its
+   gutter-aligned box instead. */
+.offcanvas-body .container.lang-switcher--mobile {
+    width: calc(100% - 24px);
+}
+.lang-switcher--mobile .lang-switcher__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0b131f;
+}
+.lang-switcher--mobile .lang-switcher__toggle {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 8px 40px 8px 12px;
+    text-align: left;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    color: #0b131f;
+    background-color: #fff;
+    border: 1px solid #d9e4f8;
+    border-radius: 6px;
+}
+/* Bootstrap's .dropdown-toggle::after border triangle, swapped for the header chevron. */
+.lang-switcher--mobile .lang-switcher__toggle::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 0.8em;
+    height: 0.8em;
+    margin: 0;
+    border: 0;
+    background-color: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3'%3E%3Cpolyline points='5 8 12 15 19 8'/%3E%3C/svg%3E") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3'%3E%3Cpolyline points='5 8 12 15 19 8'/%3E%3C/svg%3E") no-repeat center / contain;
+    transform: translateY(-50%);
+    transition: transform 0.25s ease;
+}
+.lang-switcher--mobile .lang-switcher__toggle[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+.lang-switcher--mobile .dropdown-menu {
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px;
+    border-color: transparent;
+    box-shadow: 0 0 12px 0 #0000001f;
+}
+.lang-switcher--mobile .dropdown-menu.show {
+    display: grid;
+    gap: 8px;
+}
+.lang-switcher--mobile .dropdown-menu li {
+    background: #f5f8fd;
+    border-radius: 8px;
+}
+.lang-switcher--mobile .dropdown-item {
+    padding: 8px 12px;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    color: #0b131f;
+    border-radius: 8px;
+}
+.lang-switcher--mobile .dropdown-item:hover,
+.lang-switcher--mobile .dropdown-item.active {
+    color: #0905a1;
+    background-color: transparent;
+}
+.signup-electricity-header-right-corner-button {
+    border-radius: 10px;
+    border: 0;
+    padding: .5rem 1.1rem;
+    border: 2px solid #182150;
+    padding: 8px 24px;
+    font-family: "DM Sans",sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #182150;
+}
+.signup-electricity-header-right-corner-button-mobile-view {
+    border-radius: 5px;
+    border: 0;
+    padding: .5rem 1.1rem;
+    border: 1px solid #182150;
+    padding: 12px 24px;
+    font-family: Poppins,sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #182150;
+    display: block;
+}
+.signup-electricity {
+    border-radius: 50px;
+    background: linear-gradient(97.83deg,#101f9d 6.22%,#11111c 87.68%);
+    border: 0;
+    padding: .5rem 1.1rem;
+    border-radius: 50px;
+    padding: 8px 24px;
+    background: linear-gradient(97.83deg,#101f9d 6.22%,#11111c 87.68%);
+    font-family: Poppins,sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0;
+    color: #fff;
+}
+@media (min-width: 992px) {
+    .signup-electricity-header-right-corner-button-mobile-view {
+        display: none;
+    }
+}
+.btn-secondary {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 16px;
+    color: #f6f6f6;
+    line-height: 24px;
+    border-radius: 50px;
+    background-color: #06ccf8;
+    border: 0;
+}
+#mobileNav {
+    display: none;
+}
+ul.navbar-nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+.divider {
+    width: 100%;
+    background-color: #ecf1fb;
+    height: 2px;
+}
+nav.navbar > .divider {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    z-index: -1;
+}
+@media (min-width: 1024px) {
+    #mobileNav {
+        right: -100rem;
+    }
+    #mobileNav.show {
+        display: block;
+        right: 0;
+    }
+    .navbar {
+        height: 5rem;
+        display: block;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .navbar .navbar-brand {
+        flex-grow: 1;
+    }
+    .navbar {
+        height: 5rem;
+        display: block;
+    }
+    .navbar .navbar-brand img {
+        width: 5rem;
+        height: auto;
+    }
+    .navbar .navbar-toggler {
+        border: 0;
+    }
+    .nav-other-actions {
+        display: none !important;
+    }
+    .navbar-collapse {
+        display: none;
+    }
+    .signup-electricity-header-right-corner-button-mobile-view {
+        padding: 9px 24px;
+        margin-right: -20px;
+    }
+    #mobileNav {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        padding: 20px 40px 20px 20px;
+        color: #0905a1;
+        z-index: 101;
+        transition: right 0.3s ease-in-out;
+    }
+    #mobileNav .mobile-header .mobile-brand-logo img {
+        width: 7rem;
+    }
+    #mobileNav ul {
+        text-align: center;
+    }
+    #mobileNav ul li:not(:last-child) {
+        border-bottom: 2px #0905a1 dashed;
+    }
+    #mobileNav ul a {
+        font-size: 1.2rem;
+    }
+    #mobileNav.show {
+        display: block;
+        right: -1.5rem;
+    }
+    #mobileNav ul {
+        list-style: none;
+        padding: 0;
+    }
+    #mobileNav li a {
+        color: #0905a1;
+        text-decoration: none;
+        display: block;
+        margin: 1rem 0;
+    }
+    #mobileNav .signup-electricity-mobile {
+        border-radius: 50px;
+        padding: 8px 24px;
+        background: linear-gradient(97.83deg,#101f9d 6.22%,#11111c 87.68%);
+        font-family: Poppins,sans-serif;
+        font-weight: 600;
+        border: 0;
+        color: #fff;
+    }
+    #mobileNav .lang-switcher--mobile  ul{
+        text-align: left;
+        gap:0
+    }
+    #mobileNav .lang-switcher--mobile .dropdown-menu li{
+        border-bottom:none;
+        background:transparent;
+    }
+    #mobileNav .lang-switcher--mobile li a{
+        margin:0;
+        font-size: 16px !important;
+                font-family: "DM Sans", sans-serif;
+        font-size: 16px !important;
+        font-weight: 400;
+        color: #5d627c;
+    }
+}
+.card {
+    border: 0;
+    background-color: #f8fbff;
+    border-radius: 16px;
+}
+.card .card-body {
+    padding: 20px;
+    background-color: #f8fbff;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+.card .card-body .card-text {
+    color: #4f4f4f;
+    font-size: 14px;
+    max-height: 3.5rem;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.card .card-body .card-title {
+    color: #212529;
+    max-height: 3.5rem;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+@media screen and (max-width: 767px) {
+    .card .card-body {
+        padding: 1rem;
+    }
+    .navbar .navbar-brand {
+        padding-bottom: 10px;
+        flex-grow: 0;
+        margin:0
+    }
+}
+@media (min-width: 1200px) {
+    .navbar > .container {
+        padding: 0 5px;
+    }
+}
+#custom-handle {
+    width: 36px;
+    height: 36px;
+    top: 60%;
+    margin-top: -1.2em;
+    border: 2px solid var(--Black-100,#e2e4ec);
+    position: relative;
+    background-color: #fff !important;
+    outline: 0;
+    border-radius: 8px;
+}
+#custom-handle::after,
+#custom-handle::before {
+    content: "";
+    position: absolute;
+    border-left: 2px solid var(--Black-200,#9ea2b8);
+    height: 16px;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%,-50%);
+}
+#custom-handle::before {
+    transform: translate(-4px,-50%);
+}
+#custom-handle::after {
+    transform: translate(4px,-50%);
+}
+.ui-state-default#custom-handle {
+    background: #fff;
+}
+.ui-state-disabled {
+    opacity: 0.95 !important;
+}
+#slider-meow {
+    width: 94%;
+    height: 20px;
+    background-color: #e1e1e1;
+    border-radius: 4px;
+    border: 0;
+    margin: auto;
+}
+.slider-value-box {
+    position: absolute;
+    bottom: -37px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #182150;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.navbar-nav {
+    --bs-nav-link-padding-y: 0rem;
+}
+#menu-level-0 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* Distance from a menu item's bottom edge to the navbar's -- measured
+       navbar geometry, differs across the 1024px breakpoint. */
+    --nav-item-gap: 21px;
+    /* How far below the item its dropdown opens, leaving the hover rule
+       clear. One knob for every dropdown, at every width. */
+    --dropdown-drop: 8px;
+}
+@media screen and (max-width: 1024px) {
+    /* The navbar packs its items higher below this breakpoint. */
+    #menu-level-0 {
+        --nav-item-gap: 35px;
+    }
+}
+#menu-level-0 .menu-item {
+    position: relative;
+}
+#menu-level-0 > .menu-item:hover > a {
+    background-color: #f5f8fd;
+    /* The rule is a background bar, not a border or an inset shadow: those
+       follow the corner radius and bend at the ends, while a background stays
+       straight and gets clipped by the radius where it runs past the corner. */
+    background-image: linear-gradient(#2d36c8, #2d36c8);
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: bottom;
+}
+#menu-level-0 > .menu-item:hover > a::before {
+    /* Transparent, and only the gap down to the dropdown: it exists so :hover
+       survives the trip across it. */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: var(--dropdown-drop);
+}
+#menu-level-0 .menu-item a {
+    text-decoration: none;
+    margin: 0 10px;
+    display: flex;
+    font-size: 16px;
+    color: #182150;
+    font-family: "DM Sans";
+    font-weight: 500;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    padding-left: 6px;
+}
+/* Two IDs, because basic.css ships `#menu-level-0 .menu-item a{...padding...
+   margin...}` at equal specificity and loads after this file. */
+#navbarNav #menu-level-0 > .menu-item > a {
+    position: relative;
+    border-radius: 4px;
+    /* Breathing room inside the hover chip. Set here rather than on :hover so
+       the row does not reflow when the pointer crosses it. */
+    padding-left: 12px;
+    padding-right: 12px;
+    /* Pulled in from 10px, so the wider chips do not push the row out. */
+    margin: 0 6px;
+    /* Above the open dropdown, so its shadow does not wash out the tint. */
+    z-index: 1;
+}
+#menu-level-0 #menu-level-1 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 10px 8px;
+    width: 13rem;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 12px 0 #0000001f;
+    border-radius: 12px;
+}
+/* Down to the navbar's bottom edge, so the item's hover rule stays visible
+   above it and every dropdown lines up on the same edge. Three IDs, because
+   basic.css ships `#menu-level-0 #menu-level-1{...top:100%...}` and loads
+   after this file. */
+#navbarNav #menu-level-0 #menu-level-1 {
+    top: calc(100% + var(--dropdown-drop));
+}
+#menu-level-0 #menu-level-1 .menu-item {
+    background: #f5f8fd;
+    border-radius: 8px;
+}
+#menu-level-0 #menu-level-1 .menu-item a {
+    font-family: "DM Sans",sans-serif;
+    padding: 8px;
+    line-height: 2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3045;
+    font-size: 16px;
+    width: 100%;
+    margin: 0;
+}
+#menu-level-0 #menu-level-1 .menu-item a span {
+    color: #5d627c;
+}
+#menu-level-0 .menu-item:hover > #menu-level-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#menu-level-0 #menu-level-1 .menu-item a:hover {
+    background-color: #fff0;
+    color: #0b131f;
+}
+.menu-type-presence:hover > .presence-menu,
+.menu-type-presence:focus-within > .presence-menu,
+.menu-type-presence.is-open > .presence-menu {
+    display: block;
+}
+/* The panel hangs off the fixed navbar rather than off its own menu item, so
+   it can keep a fixed gutter from the viewport edge at every width instead of
+   drifting off-screen wherever the item happens to sit. */
+#menu-level-0 .menu-item.menu-type-presence {
+    position: static;
+}
+.presence-menu {
+    display: none;
+    position: absolute;
+    /* The sibling dropdowns hang off their own menu item (`#menu-level-1 {
+       top: 100% }`). This one hangs off the navbar so it can hold a gutter
+       from the viewport edge, so it has to add back the gap below the items
+       to line up with them. */
+    top: calc(100% - var(--nav-item-gap) + var(--dropdown-drop));
+    right: 32px;
+    padding: 24px;
+    /* Width follows the column count, which follows the number of states. */
+    width: calc(var(--presence-cols, 6) * 152px + 48px);
+    max-width: calc(100vw - 64px);
+    overflow: auto;
+    background: #fff;
+    /* Same shadow and radius as the sibling dropdowns (#menu-level-1). */
+    box-shadow: 0 0 12px 0 #0000001f;
+    border-radius: 12px;
+}
+.presence-columns {
+    /* Columns come pre-packed from PHP, so there is no balancing to go wrong:
+       no column is ever empty, no state's cities split across two, and the
+       height is whatever the longest column needs. */
+    display: flex;
+}
+.presence-column {
+    width: 152px;
+}
+.presence-state {
+    margin-bottom: 24px;
+}
+.presence-column .presence-state:last-child {
+    /* No trailing gap under the last state, or every column pads the panel by
+       another 24px it does not use. */
+    margin-bottom: 0;
+}
+#menu-level-0 .menu-item .presence-menu .presence-state-name {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #2c3045;
+}
+.presence-menu .presence-city-list {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+}
+.presence-menu .presence-city-list li {
+    margin-bottom: 8px;
+}
+#menu-level-0 .menu-item .presence-menu .presence-city-list a {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #5d627c;
+}
+#menu-level-0 .menu-item .presence-menu .presence-city-list a:hover,
+#menu-level-0 .menu-item .presence-menu a.presence-state-name:hover {
+    color: #131ca2;
+}
+.menu-level-0 {
+    list-style: none;
+    padding: 0;
+}
+.menu-item {
+    position: relative;
+}
+.menu-level-1 {
+    list-style: none;
+    padding-left: 20px;
+    display: none;
+}
+.menu-item:hover .menu-level-1 {
+    display: block;
+}
+.menu-item a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+.menu-item a:hover {
+    color: #0073aa;
+}
+.menu-item-4016:hover > .panel-menu-container {
+    display: block;
+}
+.menu-item-4079:hover > .panel-menu-container {
+    display: block;
+}
+.menu-item-4744:hover > .panel-menu-container {
+    display: block;
+}
+.panel-menu-container {
+    display: none;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / .1);
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    padding: 12px;
+    font-family: Poppins,sans-serif;
+}
+/* The More panel had no `top` at all, so it sat at its static position -- a
+   different height from every other dropdown -- with the old shadow and radius.
+   One ID, to clear the `.panel-menu-container{...}` copy basic.css loads after
+   this file. z-index goes back to auto so it sits under the item's hover chip
+   like the others. */
+#menu-level-0 .panel-menu-container {
+    top: calc(100% + var(--dropdown-drop));
+    z-index: auto;
+    box-shadow: 0 0 12px 0 #0000001f;
+    border-radius: 12px;
+    /* Same shell as #menu-level-1. */
+    width: 12rem;
+    padding: 10px 8px;
+}
+#menu-level-0 .panel-menu-container .panel-grid {
+    gap: 10px;
+}
+#menu-level-0 .panel-menu-container .panel-button {
+    /* `.panel-button` is one class, so `#menu-level-0 .menu-item a` outranks it
+       and its own padding/colour never applied -- the buttons were wearing the
+       top-level nav link's 4px/6px padding and 10px side margins. */
+    margin: 0;
+    padding: 8px;
+    line-height: 2rem;
+    color: #2c3045;
+}
+.panel-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.panel-button {
+    background: #f5f8fd;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1f38;
+    width: 100%;
+    cursor: pointer;
+    font-family: Poppins,sans-serif;
+    border-radius: 8px;
+}
+.panel-button:last-child {
+    border-bottom: none;
+}
+/* .material-symbols-outlined {
+    font-size: 18px;
+    margin-right: 5px;
+} */
+.offcanvas-top {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.offcanvas-top.show {
+    overflow: auto;
+    height: 100vh;
+}
+.offcanvas-top .offcanvas-body {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.offcanvas-top .offcanvas-header {
+    border-bottom: 1px solid #d9e4f8;
+}
+.offcanvas-top .offcanvas-header .brand-logo {
+    width: 6rem;
+}
+.offcanvas {
+    --bs-offcanvas-height: 65vh !important;
+}
+.offcanvas-body .accordion {
+    --bs-accordion-bg: #fff;
+    --bs-accordion-active-color: #0b131f;
+    --bs-accordion-active-bg: #fff;
+}
+.offcanvas-body .accordion-item {
+    border: none;
+    margin: 10px 0;
+    padding-top: 8px !important;
+    border-bottom: 1px solid #e2e4ec !important;
+}
+.offcanvas-body .accordion-item:last-of-type {
+    border: none;
+    margin: 10px 0;
+    padding-top: 8px !important;
+    border-bottom: 1px solid #e2e4ec !important;
+    margin-bottom: 17px;
+}
+.offcanvas-body .section-title {
+    font-family: Poppins,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0b131f;
+    margin: 10px 0;
+    padding: 10px 0;
+    background: #fff;
+}
+.offcanvas-body .accordion-button,
+.offcanvas-body .mobile-menu-item a {
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0b131f;
+    background-color: #fff;
+    position: relative;
+}
+.offcanvas-body .accordion-button {
+    padding: 0 !important;
+}
+.offcanvas-body .accordion-button:not(.collapsed) {
+    color: #0b131f;
+    background-color: #fff;
+    box-shadow: none;
+}
+.offcanvas-body .accordion-button::after {
+    display: none;
+}
+.offcanvas-body .accordion-arrow {
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 15px;
+}
+.offcanvas-body .accordion-button:not(.collapsed) .accordion-arrow {
+    transform: rotate(180deg);
+}
+.offcanvas-body .accordion-body {
+    padding: 0 !important;
+}
+.offcanvas-body .list-unstyled li {
+    list-style: none;
+}
+.offcanvas-body .list-unstyled .list-more {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    background: #fff;
+    padding: 3px 15px;
+    font-family: Poppins,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2c3045 !important;
+    text-decoration: none;
+    border-bottom: 1px solid #e2e4ec !important;
+}
+.offcanvas-body .list-unstyled .list-more a {
+    color: #2c3045 !important;
+    text-decoration: none;
+    display: block;
+    margin: 1rem 0;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+.offcanvas-body .presence-mob-state + .presence-mob-state {
+    margin-top: 16px;
+}
+.offcanvas-body .presence-mob-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    /* The toggle is an <a> wherever the state has a landing page, so undo the
+       link styling the offcanvas menu applies to every anchor inside it. */
+    color: inherit;
+    text-decoration: none;
+}
+.offcanvas-body .presence-mob-name {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 22px;
+    color: #2c3045 !important;
+    text-decoration: none;
+}
+
+
+.offcanvas-body .presence-mob-cities {
+    margin-top: 8px;
+    background: #f5f8fd;
+    border-radius: 8px;
+}
+/* #mobileNav-scoped, to out-specify the centred, blue-dashed list styling the
+   old offcanvas menu applies to every `ul` inside it. */
+#mobileNav .presence-mob-cities ul {
+    margin: 0;
+    padding: 0 14px;
+    text-align: left;
+}
+#mobileNav .presence-mob-cities li:not(:last-child) {
+    border-bottom: 0;
+}
+#mobileNav .presence-mob-cities li + li {
+    border-top: 1px solid #e2e4ec;
+}
+.offcanvas-body .presence-mob-cities li a {
+    display: block;
+    margin: 0 !important;
+    padding: 12px 0 !important;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 22px;
+    color: #2c3045 !important;
+    text-decoration: none;
+}
+.offcanvas-body .solutions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.offcanvas-body .solutions-grid .solutions-grid-item {
+    width: max-content;
+    background: #f5f8fd;
+    border-bottom: 0 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}
+.offcanvas-body .solutions-grid .solutions-grid-item a {
+    margin: 8px !important;
+    color: #2c3045 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    display: flex !important;
+}
+.offcanvas-body .menu-section {
+    border-bottom: 1px solid #e2e4ec !important;
+}
+.offcanvas-body .menu-link {
+    display: flex;
+    padding: 8px 12px;
+    background: #f5f8fd;
+    border-radius: 8px;
+    font-family: Poppins,sans-serif;
+    font-size: 14px !important;
+    font-weight: 500;
+    color: #2c3045;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: max-content;
+}
+.offcanvas-body .menu-link:hover {
+    background-color: #e0f7ff;
+    color: #0b131f;
+}
+@media (max-width: 768px) {
+    .offcanvas-body .cities-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .offcanvas-body .menu-type-solutions .accordion-body {
+        padding: 0 !important;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 8px;
+    }
+    .offcanvas-body .menu-type-more .accordion-body {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    /* .menu-link .material-symbols-outlined {
+        display: none;
+    } */
+    #mobileNavAccordion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 32px 0;
+    }
+    .offcanvas-body .accordion-item,
+    .offcanvas-body .accordion-item:last-of-type {
+        margin: 0;
+        padding-top: 0 !important;
+        border-bottom: none !important;
+    }
+    .offcanvas-body .accordion-button,
+    .mobile-menu-item {
+        margin-bottom: 16px;
+    }
+    .offcanvas-body .menu-link {
+        padding: 0;
+        background: none;
+        border-radius: 8px;
+        font-family: "DM Sans",sans-serif;
+        font-size: 16px !important;
+        font-weight: 400;
+        color: #5d627c;
+    }
+    .offcanvas-body .accordion-arrow {
+        right: 0;
+    }
+    .navbar {
+        height: 4.5rem;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+.offcanvas-body .schedule-visit {
+    margin-bottom: 17px;
+}
+.offcanvas-body .schedule-visit a {
+    width: -webkit-fill-available;
+}
+.sticky-button-wrapper {
+    background-color: #fff;
+    backdrop-filter: blur(20px);
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+.sticky-button-wrapper a {
+    border: 2px solid #182150;
+    padding: 16px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 8px;
+    color: #182150;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: "DM Sans";
+}
+#form-error-message {
+    font-size: 14px;
+    color: #dc3545;
+    margin-top: 15px;
+}
+#form-error-message a {
+    text-decoration: none;
+    color: #dc3545;
+}
+
+
+
+
+/* Also two IDs, to stay above the chip padding set on every top-level link. */
+#navbarNav #menu-level-0 > .menu-item:has(> ul) > a,
+#navbarNav #menu-level-0 > .menu-item:has(> div) > a,
+.dropdown.lang-switcher.lang-switcher--desktop button {
+    position: relative;
+    /* Chevron's own space, plus the chip gutter. */
+    padding-right: calc(1.5em + 12px);
+}
+
+#menu-level-0 > .menu-item:has(> ul) > a::after,
+#menu-level-0 > .menu-item:has(> div) > a::after,
+#mobileNav .accordion-button .accordion-arrow,
+#mobileNav .presence-mob-state .presence-mob-name::after,
+.dropdown.lang-switcher.lang-switcher--desktop button::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 0.7em;
+    height: 0.7em;
+    background-color: currentColor;
+
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='butt' stroke-linejoin='miter'%3E%3Cpolyline points='5 8 12 15 19 8'/%3E%3C/svg%3E");
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='butt' stroke-linejoin='miter'%3E%3Cpolyline points='5 8 12 15 19 8'/%3E%3C/svg%3E");
+
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+
+    transform: translateY(-50%);
+    transition: transform 0.25s ease;
+}
+/* Clear Bootstrap's .dropdown-toggle::after border triangle before the mask draws. */
+.dropdown.lang-switcher.lang-switcher--desktop button::after {
+    display: block;
+    border: 0;
+    margin-left: 0;
+}
+.dropdown.lang-switcher.lang-switcher--desktop button[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+#mobileNav .presence-mob-toggle .presence-mob-name::after {
+    right:-20px;
+	transform: rotate(273deg);	
+	top:25%;
+	 width: 0.8em;
+    height: 0.8em;
+}
+#mobileNav .presence-mob-toggle[aria-expanded="true"] .presence-mob-name::after {
+    transform: rotate(0deg);
+}
+
+.offcanvas-body .presence-mob-name{
+    position: relative;
+}
+ #mobileNav  .offcanvas-body .accordion-button:not(.collapsed) .accordion-arrow{
+	 transform: rotate(180deg);
+}
+#menu-level-0 > .menu-item:has(> ul):hover > a::after,
+#menu-level-0 > .menu-item:has(> div):hover > a::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+.homes-menu > a,
+.commercial-menu > a,
+.housing-societies-menu > a,
+.on-grid-menu > a,
+.off-grid-menu > a{
+    display: flex;
+    align-items: center;
+}
+
+.homes-menu > a::before,
+.commercial-menu > a::before,
+.housing-societies-menu > a::before,
+.on-grid-menu > a::before,
+.off-grid-menu > a::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.homes-menu > a::before {
+    background-image: url('https://cdn.solarsquare.in/blog/wp-content/uploads/2026/09/01144100/homes-menu.svg');
+}
+
+.commercial-menu > a::before {
+    background-image: url('https://cdn.solarsquare.in/blog/wp-content/uploads/2026/09/01144121/commercial.svg');
+}
+
+.housing-societies-menu > a::before {
+    background-image: url('https://cdn.solarsquare.in/blog/wp-content/uploads/2026/09/01144141/apartment-menu.svg');
+}
+.on-grid-menu > a::before {
+    background-image: url('https://cdn.solarsquare.in/blog/wp-content/uploads/2026/09/01144211/on-grid.svg');
+}   
+.off-grid-menu > a::before {
+    background-image: url('https://cdn.solarsquare.in/blog/wp-content/uploads/2026/09/01144209/off-grid.svg');
+}
+#mobileNav .off-grid-menu>a::before,#mobileNav .on-grid-menu>a::before{
+	margin-right:6px
+}
+.brand-logo {
+    /* Explicit dimensions prevent shifts when CSS loads */
+    width: 100px !important;
+    height: 60px !important;
+    /* Modern aspect-ratio for better layout stability */
+    aspect-ratio: 100 / 60;
+    /* Prevent image from stretching */
+    object-fit: contain;
+    /* Reserve exact space even before image loads */
+    min-width: 100px;
+    min-height: 60px;
+}
+
+/* Mobile nav logo specific fix */
+#mobileNav .mobile-header .mobile-brand-logo img.brand-logo,
+.offcanvas-top .offcanvas-header .brand-logo {
+    width: 6rem !important;
+    height: auto !important;
+    aspect-ratio: 100 / 60;
+    object-fit: contain;
+}

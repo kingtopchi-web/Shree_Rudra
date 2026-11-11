@@ -1,0 +1,12 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.solarsquare.in	TRUE	/	FALSE	1999999999	lead_session_id	37a478c2-78db-42db-9c2f-2be6660bff13
+www.solarsquare.in	TRUE	/	FALSE	1999999999	PHPSESSID	2bddec61f39307207ca5a3cd932d3123
+www.solarsquare.in	TRUE	/	FALSE	1999999999	utm_source	adwords
+www.solarsquare.in	TRUE	/	FALSE	1999999999	utm_medium	ppc
+www.solarsquare.in	TRUE	/	FALSE	1999999999	utm_campaign	SSE_Gurgaon_Brand_Search_100326
+www.solarsquare.in	TRUE	/	FALSE	1999999999	utm_content	Gurgaon_Brand_Search_100326
+www.solarsquare.in	TRUE	/	FALSE	1999999999	gclid	CjwKCAjw3ejRBhAdEiwADkqPnzxZo_A1Oz5bQEctrvfwAt_nlI199lM65WnKSsQ4JNcNZbZU7_aygRoCuEoQAvD_BwE
+www.solarsquare.in	TRUE	/	FALSE	1999999999	sse_amp_landing_url	https%253A%252F%252Fwww.solarsquare.in%252Fblog%252Ftypes-of-solar-panels%252F%253Futm_campaign%253DSSE_Gurgaon_Brand_Search_100326%2526utm_content%253DGurgaon_Brand_Search_100326%2526utm_source%253Dadwords%2526utm_medium%253Dppc%2526gad_source%253D1%2526gad_campaignid%253D23634271125%2526gbraid%253D0AAAAACamwb_7clyn-g3ZZX8jFpW31WGY9%2526gclid%253DCjwKCAjw3ejRBhAdEiwADkqPnzxZo_A1Oz5bQEctrvfwAt_nlI199lM65WnKSsQ4JNcNZbZU7_aygRoCuEoQAvD_BwE%2526amp%253D1
+www.solarsquare.in	TRUE	/	FALSE	1999999999	SameSite	Lax
+

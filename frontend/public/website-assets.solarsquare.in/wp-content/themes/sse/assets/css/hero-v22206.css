@@ -1,0 +1,928 @@
+/*
+ * Hero v2 -- the redesigned hero rendered by includes/hero-v2.php.
+ *
+ * Split out of city-page.css so any template can use the component: enqueue this
+ * file and put .city-hero-v2 on the page container. Everything here is scoped to
+ * that class, so loading it alone changes nothing until a page opts in.
+ */
+/* =========================================================================
+   City hero redesign (Figma 3509:79180 desktop / 3509:80925 mobile)
+
+   Everything here hangs off .city-hero-v2, which single-city.php puts on the
+   container for the default/v1/v3 hero only. single-state.php shares this
+   stylesheet and every other class on that element, and variant 2 keeps its own
+   hero, so an unscoped rule would leak into both.
+
+   Selectors stack the three container classes where they have to out-specify an
+   existing .revamp-page-template.city-page-template rule rather than rely on
+   source order.
+   ========================================================================= */
+
+/* Clear the fixed navbar. city-page.css opens with `.revamp-page-template
+   { padding-top: 80px }`, but that file only loads on city and state -- any other
+   page using this hero (homes) would have the header sitting on top of the photo,
+   so the offset travels with the component. */
+.city-hero-v2.revamp-page-template {
+    padding-top: 80px;
+}
+
+/* .revamp-page-template offsets the page by 80px to clear the fixed navbar, but
+   home.css (which does load here) drops the navbar to 4.5rem at this width:
+   @media (max-width: 768px) { .navbar { height: 4.5rem } }. The offset stays 80px,
+   so 8px of page background shows between the navbar and the hero. Invisible
+   while the hero was white; obvious now that it opens on a dark photo. */
+@media (max-width: 768px) {
+    .city-hero-v2.revamp-page-template {
+        padding-top: 72px;
+    }
+}
+
+/* SSE-13394: on a phone the whole photo taps through to the lead form below it
+   (bound in hero-v2.js), so it points like the link it behaves as. */
+@media (max-width: 767.98px) {
+    .city-hero-v2 .hero-visual {
+        cursor: pointer;
+    }
+}
+
+
+.city-hero-v2 .hero-section.city-hero {
+    position: relative;
+    background-color: #f5f8fd;
+}
+
+/* ---- photo + scrim ---- */
+.city-hero-v2 .hero-visual {
+    position: relative;
+    min-height: 497px;
+    overflow: hidden;
+    /* The headline, subtitle and rating pill are always white, but the photo only
+       renders inside has_post_thumbnail(). A city post with no featured image, or a
+       campaign override pointing at a deleted asset, would otherwise put white copy
+       on the pale #f5f8fd section and make the first viewport unreadable. This dark
+       base is the scrim's own solid colour, so it guarantees contrast on its own and
+       is invisible whenever a photo covers it. It also catches a 404 on the image
+       itself, which markup-level guards cannot. Applies to AMP too -- it is CSS, so
+       it needs no JS and no second code path. */
+    background-color: #2c3045;
+}
+.city-hero-v2 .hero-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+/* Both selectors are needed. A plain AMP page is served as <html amp>, but an
+   optimizer-transformed one -- which is what beta-qa and prod serve -- comes out
+   as <html transformed="self;v=1" i-amphtml-layout ...> with no `amp` attribute
+   at all, so an html[amp] rule is inlined into amp-custom and then never matches.
+   That is why the 20px below reappeared on staging while local looked right.
+
+   AMP only. header.css is not loaded there, so the navbar is a normal-flow block
+   rather than the fixed 5rem bar -- and global-amp.css forces
+   `.revamp-page-template { padding-top: 20px !important }`, which used to be an
+   invisible white strip and is now a gap above the photo. Nothing to clear here,
+   so take it back to zero.
+   object-fit on <amp-img> styles the wrapper, not the image inside it, which is
+   why the photo came out stretched; the inner <img> needs it directly. */
+html[amp] .city-hero-v2.revamp-page-template,
+html[transformed] .city-hero-v2.revamp-page-template {
+    padding-top: 0 !important;
+}
+/* amp-mobile-header.php also pads the section itself --
+   `.revamp-page-template.homes-wrapper .hero-section { padding-top: 20px }` (0,3,1)
+   -- which the rule above does not touch, so the gap survived it. */
+html[amp] .city-hero-v2 .hero-section.city-hero,
+html[transformed] .city-hero-v2 .hero-section.city-hero {
+    padding-top: 0;
+}
+.city-hero-v2 .hero-media amp-img img {
+    object-fit: cover;
+    object-position: center top;
+}
+.city-hero-v2 .hero-media .hero-media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+/* Sits above the photo, below the copy. Height and stops are Figma's own: the
+   scrim is its own 409px layer there, not a full-height overlay, so stretching it
+   would drag the fade down the image. */
+.city-hero-v2 .hero-media::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 409px;
+    background: linear-gradient(180deg, #2c3045 7.09%, rgba(44, 48, 69, 0.6) 28.172%, rgba(44, 48, 69, 0) 51.834%);
+}
+
+/* ---- headline ---- */
+.city-hero-v2 .hero-copy {
+    position: relative;
+    z-index: 1;
+    padding: 56px 16px 0;
+    text-align: center;
+}
+/* The headline is an <h2>: the page's one <h1> belongs to the read-more copy at
+   the foot of these templates, and two of them fails SEO. .revamp-page-template
+   stays on the selector so it holds at (0,3,0) against the .hero-copy h2 block
+   rules below (#1027), which set the same type. */
+.city-hero-v2.revamp-page-template .hero-title {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -1.12px;
+    color: #fff;
+}
+.city-hero-v2 .hero-subtitle {
+    margin: 8px 0 0;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: -0.56px;
+    color: #fff;
+}
+
+/* ---- formatted Campaign Hero copy ----
+   The Campaign Hero editor can put paragraphs, headings, lists and quotes inside the
+   headline and subtitle. They take the line's own type rather than the
+   .hero-copy h2 / p rules below, which are for
+   homes block copy and would otherwise turn a paragraph in the headline into a
+   subtitle. :is() keeps this at (0,4,1), above those rules at either breakpoint. */
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) :is(p, h1, h2, h3, h4, h5, h6, blockquote, ul, ol) {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+    background: none;
+    text-align: inherit;
+}
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) > * + * {
+    margin-top: 0.25em;
+}
+/* Inside, because the copy is centred on mobile and an outside marker would hang
+   off to the left of the centred line. */
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) :is(ul, ol) {
+    list-style-position: inside;
+}
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) blockquote {
+    padding-left: 0.5em;
+    border-left: 3px solid currentColor;
+}
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) a {
+    color: inherit;
+    text-decoration: underline;
+}
+.city-hero-v2.revamp-page-template .hero-copy :is(.hero-title, .hero-subtitle) hr {
+    margin: 0.25em 0;
+    border: 0;
+    border-top: 1px solid currentColor;
+    opacity: 0.6;
+}
+
+/* ---- mobile CTA (homes only; city and state pass no `cta`) ----
+   Figma 4696:81693: white pill, 44px tall, black label, arrow after. Sits 16px
+   under the copy and never shows on desktop, where the form card is already in
+   view beside the headline. */
+.city-hero-v2 .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+    min-width: 249px;
+    height: 44px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.28px;
+    text-decoration: none;
+}
+.city-hero-v2 .hero-cta-arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* ---- copy authored in the block editor ----
+   The homes page keeps its headline and subheading as Gutenberg blocks rather
+   than ACF, so they arrive through `content` with their own classes. Map them
+   onto the hero's type instead of making marketing re-enter the copy. The block
+   also carries its own mobile CTA, which the component's own `cta` replaces. */
+.city-hero-v2.revamp-page-template .hero-copy h2 {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -1.12px;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    background: none;
+}
+/* The homes headline used to carry an authored <br> that split it as
+   "Join India's" / "Solar Revolution". That break had to go so the line could
+   run unbroken on desktop, which leaves mobile -- where 373px of text cannot
+   fit a 360px phone at 28px -- breaking at the last space and orphaning
+   "Revolution".
+
+   `balance` restores the old split without putting the break back in the
+   content: it minimises the longest line, and "Solar Revolution" at 216.7px
+   beats "Join India's Solar" at 225.0px. On desktop the headline is one line,
+   where balancing is a no-op. Browsers without it keep the orphan, which is
+   the behaviour they show today. */
+.city-hero-v2.homes-wrapper.revamp-page-template .hero-copy h2 {
+    max-width: 340px;
+    margin-inline: auto;
+    text-wrap: balance;
+}
+/* Targets the paragraph, not the `subheading` class: that class is authored per
+   post, and the homes page on staging has a block without it, which left the
+   subtitle unstyled over the photo. The only other <p> in here belongs to the
+   block CTA, which is hidden. */
+.city-hero-v2 .hero-copy p {
+    margin: 8px 0 0;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: -0.56px;
+    color: #fff;
+}
+/* !important because the block carries Bootstrap's .d-inline-flex, which is
+   itself !important -- without it the page shows two CTAs on mobile. */
+.city-hero-v2 .hero-copy .cta-btn {
+    display: none !important;
+}
+
+/* ---- tag bar: a peeking slider on mobile, one row on desktop ----
+   Content is the ACF `tags` repeater, the same field the pre-redesign slider
+   read. Mobile sits it at the foot of the photo, 16px clear of the rating bar
+   (Figma 4630:95048 puts it at y=385 against the rating's y=436). Each pill is
+   295px with 12px between, and the inline padding centres the parked one while
+   leaving its neighbours part-visible. city-state.js runs it as an endless belt:
+   translate one step, move the leading pill to the back, reset. No edges. */
+.city-hero-v2 .hero-tags {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    z-index: 1;
+    overflow: hidden;
+}
+.city-hero-v2 .hero-tags-bar {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    /* Centres the pill the belt has parked, leaving its neighbours peeking. */
+    padding: 0 calc((100% - 295px) / 2);
+    will-change: transform;
+}
+.city-hero-v2 .hero-tag {
+    flex: 0 0 295px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    /* Frosted glass. Figma 4700:81808 carries only the 20%-black fill -- the blur,
+       the rim and the lift are ours, to give the pill an edge against a busy photo
+       instead of reading as a flat grey box. */
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+        0 2px 8px rgba(0, 0, 0, 0.18);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.28px;
+    color: #fff;
+    white-space: nowrap;
+}
+.city-hero-v2 .hero-tag-icon {
+    flex: 0 0 auto;
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+/* AMP has no JS, so amp-carousel does the sliding. It clips to exactly one slide
+   -- no peek -- which is the accepted trade here. The belt's `width: max-content`
+   has to go: an auto-width block around a carousel asking for 100% resolves to
+   nothing. The 40px gutters leave the carousel at the design's 295px on a 375
+   screen. */
+.city-hero-v2 .hero-tags-bar.is-amp {
+    display: block;
+    width: auto;
+    padding: 0 40px;
+    will-change: auto;
+}
+.city-hero-v2 .hero-tags-track {
+    width: 100%;
+}
+/* Slides are laid out by the carousel, not by the belt's flex track. */
+.city-hero-v2 .hero-tags-track .hero-tag {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 35px;
+}
+.city-hero-v2 .hero-tags-track .amp-carousel-button {
+    display: none;
+}
+
+/* ---- rating: cream bar on mobile, translucent pill on desktop ---- */
+.city-hero-v2 .hero-rating {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #fcf9f1;
+}
+.city-hero-v2 .hero-rating .rating-detail {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.city-hero-v2 .hero-rating .rating-strip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 44px;
+    padding: 0;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: -0.56px;
+    color: #1a1f38;
+}
+.city-hero-v2 .hero-rating .rating-strip img {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+/* The star sits inside the Medium run in the design -- it differs by colour only.
+   global.css's `.rating-strip span` would otherwise drop it to 12px SemiBold. */
+.city-hero-v2 .hero-rating .rate-span {
+    color: #d8901e;
+    font-size: inherit;
+    font-weight: 500;
+    letter-spacing: inherit;
+}
+/* rating_section() emits a literal "|". Blanked and redrawn as the 1px rule the
+   design uses -- 9px/#9ea2b8 on the mobile bar, 18px/#e2e4ec in the desktop pill. */
+.city-hero-v2 .hero-rating .rating-sep {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 1px;
+    height: 9px;
+    background-color: #9ea2b8;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+/* Only the review count is SemiBold; "Rated ★4.8 on Google" stays Medium, and the
+   star is part of that run (colour only). A blanket span rule was bolding the star
+   too. Mobile: 12px/-0.48; desktop: 20px/-0.4. */
+.city-hero-v2 .hero-rating .rating-strip > span:last-of-type {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.48px;
+}
+
+/* ---- form card ---- */
+.city-hero-v2.city-hero-v2 .hero-section .right-section,
+.city-hero-v2.city-hero-v2 .hero-section .form-section {
+    background-color: transparent;
+}
+/* Mobile is NOT the desktop card: the design makes the form a full-width
+   #f5f8fd band with white fields sitting on it, no card chrome at all. The
+   desktop white card is applied from 1024px up. */
+.city-hero-v2.city-hero-v2.revamp-page-template .form-component form {
+    background-color: #f5f8fd;
+    border-radius: 0;
+    padding: 24px 20px 32px;
+    overflow: visible;
+}
+.city-hero-v2.city-hero-v2.revamp-page-template .form-component form .title {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.48px;
+    color: #1a1f38;
+    margin-bottom: 8px;
+}
+.city-hero-v2.city-hero-v2.revamp-page-template .form-component form .desc {
+    width: auto;
+    margin-bottom: 20px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #1a1f38;
+}
+/* global.css pins this to 395px at >=768px, which would crop the taller card. */
+.city-hero-v2.city-hero-v2 .form-component .form-field-outer-wrapper {
+    height: auto;
+    overflow: visible;
+}
+
+/* ---- fields ---- */
+/* Mobile fields are taller (56 vs 48) with a 16px label; 16px also keeps iOS
+   from zooming the viewport on focus. Desktop shrinks both from 1024px up. */
+.city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control {
+    height: 56px;
+    min-height: 56px;
+    padding: 24px 19px 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1f38;
+    background-color: #fff;
+    border: 1px solid #e2e4ec;
+    border-radius: 12px;
+}
+/* Must out-specify the border above, which would otherwise swallow the red
+   outline city-state.js applies via .is-error. */
+.city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control.is-error {
+    border-color: #d32f2f;
+}
+.city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control:focus {
+    border-color: #131ca2;
+}
+.city-hero-v2.city-hero-v2 .form-component .form-floating > label {
+    padding: 0 19px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.32px;
+    color: #5d627c;
+    opacity: 1;
+    transform: none;
+}
+/* bootstrap.min.css floats a white block behind the label text — `label::after`,
+   `position: absolute; inset: 1rem .375rem; height: 1.5em; background: var(--bs-body-bg)`
+   — to punch a hole in the input's border for outlined fields. The label carries
+   `z-index: 2`, so that block paints over the input, and the city fields have no
+   border for it to mask. It went unnoticed while the label collapsed to 23.4px,
+   because `overflow: hidden` clipped the band to the few pixels that fit; at a
+   full-height label the band is uncropped and lands exactly on the value text. */
+.city-hero-v2.city-hero-v2 .form-component .form-floating > label::after {
+    display: none;
+}
+/* The float is driven by padding-bottom against a fixed box, not by height /
+   align-items. global.css:867 puts `transition: 0.2s ease-in-out` — i.e. `all`
+   — on every floating label, so each property that differs between the two
+   states gets animated. Moving the label with `height: 100% -> auto` and
+   `align-items: center -> flex-start` made that a bounce: height is not
+   interpolable so the box collapsed on frame one, dropping the text to ~2.3px
+   below the field top, and align-items is discrete so it flipped at the 50%
+   mark — then padding-top eased 0 -> 7px and carried the text back down to its
+   resting 5px. Up too far, then back.
+   Holding height and align-items constant leaves padding-bottom (and font-size
+   below 1024px) as the only things that change, both interpolable, so the
+   label travels 14.8px -> 5px in one monotonic move. 19.6px of padding-bottom
+   raises a centred line box by half that, which is the 9.8px needed here. */
+.city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control:focus ~ label,
+.city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    /* 20px, not 28px. The padding lifts a centred line box by half its value, so
+       28px put the floated label 6.8px from the top of the field -- close to the
+       edge, with a correspondingly wide gap beneath it. The value cannot move to
+       meet it: its position comes from the input's own 24px padding-top. So the
+       label is the only thing that travels, and dropping it widens the space above
+       and narrows the gap below in one move -- 14.6px above the glyph and 9.1px
+       under it, against 12.6 and 11.1 at 24px. Desktop overrides this with 20px of
+       its own, against a shorter 48px box. */
+    padding-bottom: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 1;
+    transform: none;
+}
+.city-hero-v2.city-hero-v2 .form-component .bill-label {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: -0.64px;
+    color: #1a1f38;
+}
+
+/* ---- bill chips ----
+   Non-AMP: city-state.js deletes .bill-radio and unhides .custom-radio.
+   AMP: no JS runs, so the real radio inputs are what render. Both are styled. */
+.city-hero-v2.city-hero-v2 .form-section .form-component .custom-radio-block {
+    margin: 0;
+    /* global.css pairs the negative margin above with padding-left:15px for the
+       mobile scroll strip. Left in place it eats 15px of the 434px row, dropping
+       the third chip onto the next line. */
+    padding-left: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+    overflow: visible;
+}
+/* Mobile chips hug their text (radius 8, 12x20 padding); desktop switches to the
+   fixed 136px / 42px / radius 12 pills. */
+.city-hero-v2.city-hero-v2 .form-section .form-component .custom-radio,
+.city-hero-v2.city-hero-v2 .form-section .form-component .bill-radio-inp + label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.28px;
+    color: #1a1f38;
+    background: #fff;
+    border: 1px solid #e2e4ec;
+}
+.city-hero-v2.city-hero-v2 .form-section .form-component .bill-radio {
+    margin: 0;
+}
+.city-hero-v2.city-hero-v2 .form-component .custom-radio.active,
+.city-hero-v2.city-hero-v2 .form-component .bill-radio-inp:checked + label {
+    background: linear-gradient(91.38deg, #101f9d 0%, #11111c 99.9%);
+    border-color: #e2e4ec;
+    color: #fff;
+}
+
+/* ---- consent + submit ---- */
+.city-hero-v2.city-hero-v2 .form-component .check_terms_policy .form-check-label {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.48px;
+    color: #5d627c;
+}
+.city-hero-v2.city-hero-v2 .form-component .check_terms_policy a {
+    color: #131ca2;
+    font-weight: 500;
+}
+.city-hero-v2.city-hero-v2.revamp-page-template .form-component .cta-btn {
+    height: 50px;
+    line-height: 1;
+    border-radius: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.28px;
+    color: #fff;
+    background: linear-gradient(92.8442deg, #101f9d 0%, #11111c 99.904%);
+    border: none;
+}
+
+/* ---- validation errors must not move the card ----
+   city-state.js reveals these by setting display:block / removing .d-none, which
+   would otherwise push every field below it down and shove the CTA out of place.
+   Taking them out of flow and dropping them into the 1rem gutter the field
+   wrappers already carry keeps the card's geometry fixed. */
+.city-hero-v2.city-hero-v2 .form-component .form-field-inner-wrapper,
+.city-hero-v2.city-hero-v2 .form-component .bill-field {
+    position: relative;
+    margin-bottom: 1rem;
+}
+/* Only the fields that can actually raise an error reserve the wider gutter --
+   the consent row shares .form-field-inner-wrapper but never shows one, so
+   widening it there would grow the card for nothing. */
+.city-hero-v2.city-hero-v2 .form-component .form-floating.form-field-inner-wrapper,
+.city-hero-v2.city-hero-v2 .form-component .bill-field {
+    margin-bottom: 22px;
+}
+.city-hero-v2.city-hero-v2 .form-component .invalid-feedback,
+.city-hero-v2.city-hero-v2 .form-component .billError {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 0 0 12px;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+/* Below 1024 the hero stacks the way mobile does -- photo, copy, rating bar, then
+   the form beneath it. The base (mobile) rules already do that; the only thing in
+   the way is global.css, which pins .right-section to width:38% from 768px up for
+   the old side-by-side hero. Left alone that strands the card at ~38% of the
+   viewport, pinned left, with a wide empty gutter beside it. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .city-hero-v2 .hero-section.city-hero > .right-section {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+    /* Full bleed, exactly as on mobile -- no max-width and no auto margins, so the
+       form fills the section instead of sitting in it as a centred card. */
+    .city-hero-v2 .hero-section.city-hero > .right-section > .right-section-wrapper {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        /* global.css @768 sets height:100% here; harmless while the parent is
+           auto-height, but pinned so the card cannot inherit a stretched box. */
+        height: auto;
+    }
+    /* The card is otherwise identical to mobile already -- every other rule in
+       global.css's 768px block is out-specified by the base .city-hero-v2 rules.
+       This is the one that gets through: a 38px top margin mobile never has. */
+    .city-hero-v2.city-hero-v2 .hero-section .form-component form {
+        margin: 0;
+    }
+}
+
+
+/* 1024px, not the 768px used elsewhere in this file: the card is a fixed 498px, so
+   overlaying it any narrower leaves too little beside it for the headline. */
+@media (min-width: 1024px) {
+    /* Photo, copy and form card share one grid cell so the card floats over the
+       hero image without absolute positioning; the section still grows if the
+       right column runs taller than the photo. */
+    .city-hero-v2.city-hero-v2 .hero-section.city-hero {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .city-hero-v2 .hero-visual,
+    .city-hero-v2 .hero-section.city-hero > .right-section {
+        grid-area: 1 / 1;
+    }
+    /* 745px is the design height and the floor. It stretches rather than staying
+       fixed so the photo always covers the full row: the form card is the only
+       thing in the right column now, and its height moves with the ACF copy and
+       the reserved error gutters. Pinning the band would leave a strip of section
+       background under the photo whenever the card ran taller. */
+    .city-hero-v2 .hero-visual {
+        min-height: 745px;
+        align-self: stretch;
+    }
+    /* Figma's scrim is a 668px layer sitting 30px above the frame, so its top is
+       clipped there exactly as it is here -- same offset, same stops, same angle. */
+    .city-hero-v2 .hero-media::after {
+        top: -30px;
+        height: 668px;
+        background: linear-gradient(175.8047deg, #2c3045 2.9488%, rgba(44, 48, 69, 0.6) 27.589%, rgba(44, 48, 69, 0) 46.354%);
+    }
+    .city-hero-v2 .hero-copy {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 72px 0px 0;
+        text-align: left;
+    }
+    /* The copy and the card share one grid cell, so nothing stops the headline
+       running underneath the card as the viewport narrows. Cap the text at
+       whatever is left beside the 498px card (plus a 40px gap) so it wraps
+       instead, and fall back to the design's 679px once there is room for it. */
+    .city-hero-v2 .hero-title,
+    .city-hero-v2 .hero-subtitle {
+        max-width: min(679px, calc(100% - 538px));
+        overflow-wrap: break-word;
+    }
+    .city-hero-v2.revamp-page-template .hero-title {
+        font-size: 56px;
+        line-height: 64px;
+        letter-spacing: -2.24px;
+    }
+    .city-hero-v2 .hero-subtitle {
+        margin-top: 16px;
+        font-size: 20px;
+        letter-spacing: -0.8px;
+    }
+    .city-hero-v2 .hero-cta {
+        display: none;
+    }
+    /* Block copy is authored centred (has-text-align-center) and unconstrained; the
+       hero is left-aligned and has to stop short of the form card, same as the ACF
+       copy does. */
+    .city-hero-v2.revamp-page-template .hero-copy h2,
+    .city-hero-v2 .hero-copy p {
+        max-width: min(679px, calc(100% - 538px));
+        text-align: left;
+    }
+    .city-hero-v2.revamp-page-template .hero-copy h2 {
+        font-size: 56px;
+        line-height: 64px;
+        letter-spacing: -2.24px;
+    }
+    /* Homes only: "Join India's Solar Revolution" is 29 characters, 811px at 56px
+       before tracking, and the shared cap above leaves it 679px -- so it broke
+       after "Solar" and orphaned "Revolution".
+
+       Two changes get it onto one line without touching the font size. Lifting
+       the 679px cap hands the headline the full run up to the form card, 742px
+       at a 1440px container; tightening tracking from -2.24px to -3px pulls the
+       string to 724px, 18px inside that. calc(100% - 538px) still holds, so
+       below ~1440px it simply wraps again rather than sliding under the card.
+
+       Scoped to .homes-wrapper: city and state headings are place names of
+       unpredictable length that already fit, and neither wants the tighter
+       tracking. */
+    .city-hero-v2.homes-wrapper.revamp-page-template .hero-copy h2 {
+        max-width: calc(100% - 538px);
+        /* undo the mobile cap's centring -- desktop copy is left-aligned */
+        margin-inline: 0;
+        letter-spacing: -3px;
+    }
+    .city-hero-v2 .hero-copy p {
+        margin-top: 16px;
+        font-size: 20px;
+        letter-spacing: -0.8px;
+    }
+    /* Desktop drops the slider: the pills sit in a wrapping row 24px under the
+       subtitle (Figma 4700:81739 at y=196 against the copy block ending at 172),
+       aligned to the same 80px gutter as the headline. Back into flow, so they sit
+       directly beneath the copy rather than at the foot of the photo. */
+    .city-hero-v2 .hero-tags {
+        position: relative;
+        bottom: auto;
+        width: 55%;
+        margin: 24px 0;
+        padding: 0 0px;
+        overflow: visible;
+    }
+    /* Each row carries its own glass here, so the container is layout only. */
+    .city-hero-v2 .hero-tags-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 12px;
+        width: auto;
+        padding: 0;
+        /* Held to the same column as the headline and subtitle, so the row wraps
+           before it reaches the form card instead of running under it. */
+        /* max-width: min(679px, calc(100% - 538px)); */
+        /* Nothing translates here, so drop the belt's compositing hint too. */
+        transform: none !important;
+        will-change: auto;
+    }
+    /* The pill is the base layer's -- fill, radius, 8px/16px padding and type are
+       shared with mobile. Desktop only stops it being a fixed-width slide, and
+       lets the padding set the height. */
+    .city-hero-v2 .hero-tag {
+        flex: 0 0 auto;
+        width: auto;
+        height: auto;
+        gap: 8px;
+    }
+    /* amp-carousel sizes itself to its container, so an inline-flex bar that sizes
+       itself to the carousel would collapse. Give the AMP bar the design's own
+       642px instead, and keep it rotating one row at a time as it does on mobile
+       -- AMP has no JS to lay all of them out. */
+    .city-hero-v2 .hero-tags-bar.is-amp {
+        display: block;
+        width: 642px;
+        padding: 12px 16px;
+    }
+    .city-hero-v2 .hero-rating {
+        left: 50%;
+        right: auto;
+        bottom: 42px;
+        width: 100%;
+        max-width: 1440px;
+        transform: translateX(-50%);
+        padding: 0 80px;
+        background-color: transparent;
+    }
+    .city-hero-v2 .hero-rating .rating-detail {
+        justify-content: flex-start;
+    }
+    .city-hero-v2 .hero-rating .rating-strip {
+        height: auto;
+        padding: 12px 32px;
+        font-size: 20px;
+        letter-spacing: -0.4px;
+        color: #fff;
+        /* Same frosted treatment as the pills, over the 16%-white fill Figma gives. */
+        background-color: rgba(255, 255, 255, 0.16);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.28),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+            0 2px 8px rgba(0, 0, 0, 0.18);
+        border-radius: 12px;
+    }
+    .city-hero-v2 .hero-rating .rating-sep {
+        height: 18px;
+        background-color: #e2e4ec;
+    }
+    /* Desktop pill drops the Google mark; mobile bar keeps it. */
+    .city-hero-v2 .hero-rating .rating-strip img {
+        display: none;
+    }
+    .city-hero-v2 .hero-rating .rate-span {
+        color: #e9b35e;
+    }
+    .city-hero-v2 .hero-rating .rating-strip > span:last-of-type {
+        font-size: 20px;
+        letter-spacing: -0.4px;
+    }
+    /* Same 1440 container as .hero-copy so the card tracks the headline instead of
+       the viewport edge on wide screens. */
+    .city-hero-v2 .hero-section.city-hero > .right-section {
+        z-index: 0;
+        align-self: start;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 72px 80px 72px 0;
+    }
+    .city-hero-v2 .hero-section.city-hero > .right-section > .right-section-wrapper {
+        width: 498px;
+        max-width: 100%;
+        /* global.css gives this margin:0 auto at >=768px. On a flex item auto side
+           margins absorb all free space and beat justify-content, which would park
+           the card in the middle of the 1440 track instead of at its right edge. */
+        margin: 0;
+		        position: relative;
+        z-index: 1;
+    }
+    /* ---- desktop form: the white card, and the type/metrics that differ from
+       the mobile band above (fields 48 not 56, 12px labels not 16px, fixed-width
+       radius-12 chips not hugging radius-8 ones, 48px button not 50px). ---- */
+    .city-hero-v2.city-hero-v2.revamp-page-template .form-component form {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 32px;
+    }
+    .city-hero-v2.city-hero-v2.revamp-page-template .form-component form .title {
+        font-family: "DM Sans", sans-serif;
+        font-size: 28px;
+        line-height: 37px;
+        letter-spacing: -1.12px;
+    }
+    .city-hero-v2.city-hero-v2.revamp-page-template .form-component form .desc {
+        margin-bottom: 24px;
+        color: #5d627c;
+    }
+    .city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control {
+        height: 48px;
+        min-height: 48px;
+        padding: 20px 19px 5px;
+        font-size: 14px;
+    }
+    .city-hero-v2.city-hero-v2 .form-component .form-floating > label {
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: -0.24px;
+    }
+    /* Shorter field (48px, not 56px) and the label is already 12px at rest, so
+       the float is 9.8px rather than 11.6px — half of 19.6px of padding. */
+    .city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control:focus ~ label,
+    .city-hero-v2.city-hero-v2 .form-component .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        /* Pinned. The resting label is 14px here and the floated one has to stay at
+           the 12px it has always been -- without this it inherits 14px, and the
+           float also travels further because the padding below is measured against
+           a taller line box. */
+        font-size: 12px;
+        padding-bottom: 20px;
+    }
+    .city-hero-v2.city-hero-v2 .form-component .bill-label {
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: -0.28px;
+        color: #5d627c;
+    }
+    .city-hero-v2.city-hero-v2 .form-component .check_terms_policy .form-check-label {
+        font-weight: 400;
+        letter-spacing: -0.24px;
+    }
+    .city-hero-v2.city-hero-v2.revamp-page-template .form-component .cta-btn {
+        height: 48px;
+        background: linear-gradient(93.8357deg, #101f9d 0%, #11111c 99.904%);
+    }
+    .city-hero-v2.city-hero-v2 .form-section .form-component .custom-radio,
+    .city-hero-v2.city-hero-v2 .form-section .form-component .bill-radio-inp + label {
+        flex: 0 0 auto;
+        min-width: 136px;
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 12px;
+    }
+}

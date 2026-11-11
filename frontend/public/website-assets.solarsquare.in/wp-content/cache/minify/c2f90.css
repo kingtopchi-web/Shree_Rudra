@@ -1,0 +1,23 @@
+.author-page{margin-top:80px;font-family:"DM Sans",sans-serif}.blog-card{background-color:#F5F8FD;margin:0px}.article-category{background-color:#FFFFFFB2;backdrop-filter:blur(34px);padding:4px
+12px;border-radius:50px;font-size:12px;font-weight:400;letter-spacing:-0.5px;bottom:0.5rem;left:1rem;color:#1A1F38}.blog-card .blog-card-body{padding:1rem}.post-title{font-size:1rem;font-weight:700;line-height:24px;margin-bottom:12px;color:#1A1F38}.blog-card .article-by{color:#1A1F38;font-size:16px;font-weight:600;line-height:22px}.blog-card .article-date{color:#5D627C;font-size:14px;line-height:20px}.search-breadcrumbs
+nav{--bs-breadcrumb-divider:'>';width:100%}.search-breadcrumbs li a,
+.search-breadcrumbs
+li{font-size:14px;color:#5D627C;font-weight:600;line-height:20px;font-family:'DM Sans',sans-serif}.search-breadcrumbs li a,
+.search-breadcrumbs
+li{font-size:14px;color:#5D627C;font-weight:600;line-height:20px}.author-hero{margin-top:40px;gap:25px;padding-bottom:40px;margin-bottom:40px}.article-card .blog-card-heading{font-size:28px;margin-bottom:24px;letter-spacing:-1px}.author-right{margin-top:8px}.author-right
+h1{font-size:36px}.author-right .author-designation{color:#5D627C;font-size:16px}.author-bio{font-size:14px;color:#2C3045;border-top:1px solid #E2E4EC;padding-top:16px;margin-top:16px}.talk-about{background-color:#F5F8FD;padding:16px;border-radius:8px;margin-top:16px;font-size:14px}.article-card
+button{background-color:transparent;border:none}#load-more-articles{color:#182150;letter-spacing:0}.article-card
+h3{letter-spacing:-0.5px}.card-wrapper{-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:0
+.5rem;gap:20px}article.article-card{width:17.5rem}.author-left
+img{width:100%;height:343px;object-fit:cover;object-position:top;border-radius:16px}#load-more-articles{font-size:20px}.breadcrumb{padding:12px
+0}@media (min-width: 1200px){section
+.container{padding:0
+12px}}@media (min-width: 1400px){section.container{padding:0
+50px}}@media (min-width: 768px){section
+.container{padding:0
+50px}.articles-grid{margin:0
+-18px}.post-title{font-size:1.25rem;line-height:28px;display:-webkit-box;max-width:100%;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;height:90px}.author-right
+h1{font-size:48px}.breadcrumb{padding:16px
+0}.article-card .blog-card-heading{font-size:28px;margin-bottom:14px}#load-more-articles{font-size:24px;letter-spacing:-1px;color:#182150}.article-card{padding-top:40px}.author-right .author-designation{font-size:24px}.author-bio{font-size:16px;padding-top:20px;margin-top:20px}.talk-about{font-size:16px;margin-top:20px;padding:16px
+85px 16px 16px;display:inline-block}.author-left
+img{width:425px;height:425px;object-fit:cover}article.article-card{width:25%}.card-wrapper{gap:0}.blog-card{background-color:#F5F8FD;margin:18px}}

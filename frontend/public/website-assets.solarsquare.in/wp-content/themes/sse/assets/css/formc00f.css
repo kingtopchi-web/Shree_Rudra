@@ -1,0 +1,289 @@
+#leadFormModal p {
+    color: #5d627c;
+    font-size: .875rem;
+}
+#leadFormModal .modal-dialog {
+    background-color: #ecf1fb;
+    padding: 30px 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#leadFormModal #leadForm,
+.form-section .form-component .designation-options .custom-radio,
+.revamp-page-template .content-section figure,
+.revamp-page-template.home-wrapper .content-section p,
+.revamp-page-template.homes-wrapper .content-section p {
+    margin: 0;
+}
+#leadFormModal #leadForm,
+#leadFormModal .modal-content {
+    box-shadow: unset;
+    padding: 0;
+    border: none;
+    background: #fff0;
+}
+#leadFormModal .cta-btn,
+.form-component .cta-btn {
+    background: linear-gradient(76.39deg,#101f9d 0,#11111c 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: .875rem;
+    border: none;
+}
+.leadForm .form-bottom-text {
+    color: #182150;
+    font-size: 1rem;
+    background: linear-gradient(90deg,#f2f7ff 0,#d7e4fc 40%,#edf3ff 100%);
+    padding: .5rem;
+    margin: 1.25rem -1.25rem 0 -1.5rem;
+}
+.form-bottom-text span {
+    color: #2f38cf;
+}
+#leadFormModal .form-check-label,
+.form-component .form-check-label {
+    font-size: 12px;
+    color: #5d627c;
+}
+#leadFormModal .form-check-label a,
+.form-component .form-check-label a {
+    font-weight: 500;
+    color: #131ca2;
+}
+#leadFormModal .custom-radio-block,
+.form-component .custom-radio-block {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-x: auto;
+    margin: 0 -15px;
+    padding-left: 15px;
+}
+.form-component .custom-radio-block {
+    margin: 0 -20px;
+}
+#leadFormModal .custom-radio-block::-webkit-scrollbar,
+.form-component .custom-radio-block::-webkit-scrollbar {
+    display: none;
+}
+#leadFormModal .custom-radio,
+.form-component .custom-radio {
+    display: inline-block;
+    cursor: pointer;
+    margin: 4px 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1f38;
+    text-align: center;
+    padding: 12px 15px;
+    border-radius: .75rem;
+    background: #fff;
+    border: 1px solid #e2e4ec;
+    white-space: nowrap;
+}
+.form-section .form-component .custom-radio {
+    padding: 10px 20px;
+    width: 142px;
+    margin: 4px;
+}
+.chs-wrapper .form-section .form-component .custom-radio,
+.gosolar-wrapper .form-section .form-component .custom-radio {
+    width: auto;
+}
+.form-section .form-component .custom-radio-block {
+    flex-wrap: wrap;
+}
+#leadFormModal .custom-radio.active,
+.form-component .custom-radio.active {
+    background: linear-gradient(76.39deg,#101f9d 0,#11111c 90%);
+    border: 1px solid #e2e4ec;
+    color: #fff;
+}
+.form-component label {
+    color: #5d627c;
+    font-size: 14px;
+}
+.form-component label.bill-label {
+    font-size: 14px;
+    color: #5d627c;
+    font-weight: 400;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+.commercial-form-class .form-field-inner-wrapper,
+.form-component .bill-field,
+.housing-form-class .form-field-inner-wrapper,
+.leadForm .form-field-inner-wrapper,
+.project-details-point {
+    margin-bottom: 1rem;
+}
+.form-component .form-check img {
+    height: 100%;
+    opacity: 50%;
+    margin-right: 5px;
+}
+#leadFormModal .modal-header .btn-close {
+    width: 20px;
+    height: 20px;
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    top: -18px;
+    font-size: 10px;
+}
+#leadFormModal #billError {
+    font-size: .875em;
+}
+#leadFormModal .form-check {
+    padding-left: 0;
+}
+.form-component .form-control {
+    padding: 18px 20px;
+    border: 1px solid #e2e4ec;
+    border-radius: 12px;
+}
+.form-component .form-control.is-error {
+    border: 1px solid #d32f2f;
+}
+.agmStatusError,
+.billError,
+.designationError,
+.invalid-feedback {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-left: 12px;
+}
+#leadForm .form-control:focus,
+.form-component .form-control:focus {
+    color: #111f96;
+    box-shadow: unset;
+    border: 1px solid #131ca2;
+}
+#leadForm .form-label,
+.revamp-page-template .grey {
+    color: #5d627c;
+}
+#leadFormModal .modal-header {
+    border: none;
+}
+#leadFormModal .bill-field,
+#leadFormModal .form-floating {
+    margin-bottom: 14px;
+}
+#leadFormModal .form-floating {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.form-floating input[type="tel"],
+.form-floating input[type="text"] {
+    color: #1a1f38;
+    font-weight: 600;
+}
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem;
+}
+.form-component .form-control,
+.form-component .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: #5d627c;
+    font-size: 12px;
+    padding-left: 20px;
+    font-weight: 500;
+}
+@media (min-width: 768px) {
+    #leadFormModal .form-check-label,
+    .goodzero-page .goodzero-pride .card-wrapper p,
+    .goodzero-pride .card-wrapper p {
+        font-size: 1rem;
+    }
+    #leadFormModal h2 {
+        font-size: 1.75rem;
+    }
+    #leadFormModal .custom-radio-block {
+        flex-wrap: wrap;
+    }
+    #leadFormModal .modal-header {
+        padding-bottom: 24px;
+        padding-left: 0;
+    }
+    #leadFormModal .modal-dialog {
+        max-width: 496px;
+        min-height: auto;
+        border-radius: 12px;
+    }
+    .btn-light span,
+    .btn.show span,
+    .form-floating input[type="tel"],
+    .form-floating input[type="text"],
+    .form-floating > label,
+    .form-select {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+@media (max-width: 767.98px) {
+    .modal.fade .modal-dialog-bottom-mobile {
+        transform: translateY(100%);
+        position: fixed;
+        bottom: 0;
+        margin: 0;
+        width: 100%;
+        height: auto;
+        min-height: unset;
+        transition: transform 0.3s ease-out;
+    }
+
+    .modal.show .modal-dialog-bottom-mobile {
+        transform: translateY(0);
+    }
+}
+/* ---- submit button loading state ----
+   Set by the lead-form submit handlers in script.js (homes) and city-state.js
+   (city/state) between the fetch and its failure paths.
+
+   The label is a bare text node next to `.limited-text`, so there is nothing to
+   hide selectively -- transparent text blanks the whole button face and the
+   spinner rides on ::after.
+
+   !important and the descendant selector are both load-bearing: several theme
+   rules colour this button at higher specificity than a single state class can
+   reach, and `.limited-text` sets its own colour rather than inheriting.
+
+   position is set here rather than trusting `.position-relative`, which the
+   modal's .leadFormSubmitBtn does not carry. */
+.cta-btn.is-loading,
+.cta-btn.is-loading * {
+    color: #0000 !important;
+}
+.cta-btn.is-loading {
+    position: relative;
+    pointer-events: none;
+}
+.cta-btn.is-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: sse-btn-spin 0.6s linear infinite;
+}
+@keyframes sse-btn-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cta-btn.is-loading::after {
+        animation-duration: 2s;
+    }
+}

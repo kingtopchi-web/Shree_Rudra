@@ -1,0 +1,827 @@
+{
+  "settings": {
+    "companyName": "Shree Rudra Power Systems",
+    "shortName": "SRPS",
+    "tagline": "Empowering Bharat with Next-Gen Rooftop Solar Energy",
+    "phone": "+91 98765 43210",
+    "whatsapp": "+91 98765 43210",
+    "email": "info@shreerudrapower.com",
+    "website": "http://localhost:3000",
+    "address": "B-42, Solar Industrial Complex, Sector 62, Noida, UP - 201309",
+    "gstin": "09AAACS4512F1Z8",
+    "discomPartners": [
+      "Tata Power-DDL",
+      "BSES Rajdhani",
+      "UPPCL",
+      "DHBVN",
+      "MSEDCL",
+      "Torrent Power"
+    ]
+  },
+  "leads": [
+    {
+      "id": "LEAD-109",
+      "fullName": "Anonymous Lead",
+      "phone": "9876543210",
+      "pincode": "302001",
+      "city": "Delhi NCR",
+      "state": "India",
+      "monthlyBill": "2500-4000",
+      "monthlyBillAmount": 3000,
+      "recommendedKw": 3,
+      "status": "New",
+      "notes": "Captured via website consultation form",
+      "createdAt": "2026-11-11T11:50:17.888Z",
+      "updatedAt": "2026-11-11T11:50:17.888Z"
+    },
+    {
+      "id": "LEAD-108",
+      "fullName": "Anonymous Lead",
+      "phone": "9876501234",
+      "pincode": "302001",
+      "city": "Jaipur",
+      "state": "India",
+      "monthlyBill": 4500,
+      "monthlyBillAmount": 3000,
+      "recommendedKw": 3,
+      "status": "New",
+      "notes": "Captured via website consultation form",
+      "createdAt": "2026-11-11T09:42:57.339Z",
+      "updatedAt": "2026-11-11T09:42:57.342Z"
+    },
+    {
+      "id": "LEAD-107",
+      "fullName": "Test Lead Consumer",
+      "phone": "9899887766",
+      "pincode": "110001",
+      "city": "Delhi",
+      "state": "India",
+      "monthlyBill": "2500-4000",
+      "monthlyBillAmount": 4200,
+      "recommendedKw": 3,
+      "status": "New",
+      "notes": "Captured via website consultation form",
+      "createdAt": "2026-11-11T07:16:22.179Z",
+      "updatedAt": "2026-11-11T07:16:22.179Z"
+    },
+    {
+      "id": "LEAD-106",
+      "fullName": "Test Lead Consumer",
+      "phone": "9899887766",
+      "pincode": "110001",
+      "city": "Delhi",
+      "state": "India",
+      "monthlyBill": "2500-4000",
+      "monthlyBillAmount": 4200,
+      "recommendedKw": 3,
+      "status": "New",
+      "notes": "Captured via website consultation form",
+      "createdAt": "2026-11-11T07:16:06.536Z",
+      "updatedAt": "2026-11-11T07:16:06.536Z"
+    },
+    {
+      "id": "LEAD-101",
+      "fullName": "Amitabh Sharma",
+      "phone": "9811223344",
+      "pincode": "201301",
+      "city": "Noida",
+      "state": "Uttar Pradesh",
+      "monthlyBill": "4000-8000",
+      "monthlyBillAmount": 6500,
+      "recommendedKw": 5,
+      "status": "New",
+      "notes": "Interested in 5kW On-grid rooftop system with PM Surya Ghar subsidy.",
+      "createdAt": "2026-11-10T10:15:00.000Z",
+      "updatedAt": "2026-11-10T10:15:00.000Z"
+    },
+    {
+      "id": "LEAD-102",
+      "fullName": "Pooja Verma",
+      "phone": "9823456781",
+      "pincode": "110018",
+      "city": "West Delhi",
+      "state": "Delhi",
+      "monthlyBill": "2500-4000",
+      "monthlyBillAmount": 3400,
+      "recommendedKw": 3,
+      "status": "Pending",
+      "notes": "Follow-up scheduled for electricity bill copy and roof measurements.",
+      "createdAt": "2026-11-09T14:20:00.000Z",
+      "updatedAt": "2026-11-10T11:00:00.000Z"
+    },
+    {
+      "id": "LEAD-103",
+      "fullName": "Sunil Kashyap",
+      "phone": "9712398450",
+      "pincode": "226010",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "monthlyBill": "1500-2500",
+      "monthlyBillAmount": 2100,
+      "recommendedKw": 2,
+      "status": "Site Visit Scheduled",
+      "notes": "Site visit scheduled for 12th Nov 11:30 AM. Engineer: Manish Rawat.",
+      "createdAt": "2026-11-08T09:40:00.000Z",
+      "updatedAt": "2026-11-10T12:00:00.000Z"
+    },
+    {
+      "id": "LEAD-104",
+      "fullName": "Rajendra Deshmukh",
+      "phone": "9988776655",
+      "pincode": "411038",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "monthlyBill": ">8000",
+      "monthlyBillAmount": 12500,
+      "recommendedKw": 10,
+      "status": "Converted",
+      "notes": "Converted to Customer CUST-104. 10kW commercial package booked.",
+      "createdAt": "2026-11-05T11:00:00.000Z",
+      "updatedAt": "2026-11-09T16:30:00.000Z"
+    },
+    {
+      "id": "LEAD-105",
+      "fullName": "Deepak Choudhary",
+      "phone": "9876501234",
+      "pincode": "302020",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "monthlyBill": "2500-4000",
+      "monthlyBillAmount": 3800,
+      "recommendedKw": 3,
+      "status": "New",
+      "notes": "Submitted via website calculator. Free consultation booked.",
+      "createdAt": "2026-11-11T08:30:00.000Z",
+      "updatedAt": "2026-11-11T08:30:00.000Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "CUST-101",
+      "fullName": "Vikram Singhania",
+      "phone": "9810012345",
+      "email": "vikram.singhania@gmail.com",
+      "address": "Villa 14, Palm Meadows, Sector 50",
+      "city": "Noida",
+      "state": "Uttar Pradesh",
+      "pincode": "201301",
+      "systemCapacityKw": 5,
+      "packageTitle": "5 kW High Efficiency Monocrystalline System",
+      "discom": "UPPCL",
+      "consumerNumber": "UPPCL-88492019",
+      "installationId": "INST-101",
+      "totalAmount": 260000,
+      "subsidyAmount": 78000,
+      "netPayable": 182000,
+      "paidAmount": 182000,
+      "balanceAmount": 0,
+      "commissioningDate": "2026-09-15",
+      "status": "Active"
+    },
+    {
+      "id": "CUST-102",
+      "fullName": "Ananya Mukherjee",
+      "phone": "9830114455",
+      "email": "ananya.m@outlook.com",
+      "address": "B-304, Green Valley Apartments, Dwarka Sector 12",
+      "city": "New Delhi",
+      "state": "Delhi",
+      "pincode": "110075",
+      "systemCapacityKw": 3,
+      "packageTitle": "3 kW Rooftop Solar Plant (PM Surya Ghar Special)",
+      "discom": "BSES Rajdhani",
+      "consumerNumber": "BRPL-10928374",
+      "installationId": "INST-102",
+      "totalAmount": 165000,
+      "subsidyAmount": 78000,
+      "netPayable": 87000,
+      "paidAmount": 60000,
+      "balanceAmount": 27000,
+      "commissioningDate": null,
+      "status": "Installing"
+    },
+    {
+      "id": "CUST-103",
+      "fullName": "Harpreet Singh",
+      "phone": "9872299881",
+      "email": "harpreet.singh@gmail.com",
+      "address": "House No. 112, Phase 7, Mohali",
+      "city": "Mohali",
+      "state": "Punjab",
+      "pincode": "160062",
+      "systemCapacityKw": 8,
+      "packageTitle": "8 kW Premium On-Grid Bifacial System",
+      "discom": "PSPCL",
+      "consumerNumber": "PSPCL-300192841",
+      "installationId": "INST-103",
+      "totalAmount": 395000,
+      "subsidyAmount": 78000,
+      "netPayable": 317000,
+      "paidAmount": 317000,
+      "balanceAmount": 0,
+      "commissioningDate": "2026-08-20",
+      "status": "Active"
+    },
+    {
+      "id": "CUST-104",
+      "fullName": "Rajendra Deshmukh",
+      "phone": "9988776655",
+      "email": "deshmukh.r@yahoo.com",
+      "address": "Shed 4, Deshmukh Precision Works, Bhosari MIDC",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "pincode": "411038",
+      "systemCapacityKw": 10,
+      "packageTitle": "10 kW Heavy-Duty Commercial Solar System",
+      "discom": "MSEDCL",
+      "consumerNumber": "MSEDCL-99281726",
+      "installationId": "INST-104",
+      "totalAmount": 490000,
+      "subsidyAmount": 78000,
+      "netPayable": 412000,
+      "paidAmount": 200000,
+      "balanceAmount": 212000,
+      "commissioningDate": null,
+      "status": "Installing"
+    }
+  ],
+  "products": [
+    {
+      "id": "PROD-1KW",
+      "title": "1 kW Eco Solar System",
+      "capacityKw": 1,
+      "panels": "2x 540W Mono PERC Half-Cut",
+      "inverter": "1kW Smart Single Phase On-Grid",
+      "roofSpaceSqFt": 80,
+      "dailyGenerationUnits": 4,
+      "monthlySavings": 960,
+      "grossPrice": 65000,
+      "subsidyAmount": 30000,
+      "netPrice": 35000,
+      "warrantyPanels": "25 Years Performance",
+      "warrantyInverter": "8 Years Replacement",
+      "inStock": true,
+      "category": "Residential"
+    },
+    {
+      "id": "PROD-2KW",
+      "title": "2 kW Standard Solar System",
+      "capacityKw": 2,
+      "panels": "4x 540W Mono PERC Half-Cut",
+      "inverter": "2kW High Efficiency On-Grid",
+      "roofSpaceSqFt": 160,
+      "dailyGenerationUnits": 8,
+      "monthlySavings": 1920,
+      "grossPrice": 125000,
+      "subsidyAmount": 60000,
+      "netPrice": 65000,
+      "warrantyPanels": "25 Years Performance",
+      "warrantyInverter": "8 Years Replacement",
+      "inStock": true,
+      "category": "Residential"
+    },
+    {
+      "id": "PROD-3KW",
+      "title": "3 kW Smart Power Plant (Most Popular)",
+      "capacityKw": 3,
+      "panels": "6x 550W TopCon Bi-Facial Panels",
+      "inverter": "3kW Dual MPPT Smart Inverter + IoT App",
+      "roofSpaceSqFt": 240,
+      "dailyGenerationUnits": 12,
+      "monthlySavings": 3100,
+      "grossPrice": 165000,
+      "subsidyAmount": 78000,
+      "netPrice": 87000,
+      "warrantyPanels": "25 Years Performance",
+      "warrantyInverter": "10 Years Replacement",
+      "inStock": true,
+      "category": "Residential"
+    },
+    {
+      "id": "PROD-5KW",
+      "title": "5 kW Premium Villa Solar Plant",
+      "capacityKw": 5,
+      "panels": "9x 550W TopCon High Yield",
+      "inverter": "5kW Single/3-Phase Hybrid Ready",
+      "roofSpaceSqFt": 400,
+      "dailyGenerationUnits": 20,
+      "monthlySavings": 5200,
+      "grossPrice": 260000,
+      "subsidyAmount": 78000,
+      "netPrice": 182000,
+      "warrantyPanels": "25 Years Performance",
+      "warrantyInverter": "10 Years Replacement",
+      "inStock": true,
+      "category": "Residential"
+    },
+    {
+      "id": "PROD-10KW",
+      "title": "10 kW Heavy Commercial Plant",
+      "capacityKw": 10,
+      "panels": "18x 550W Bi-Facial Heavy Duty",
+      "inverter": "10kW Three-Phase High Voltage Inverter",
+      "roofSpaceSqFt": 800,
+      "dailyGenerationUnits": 42,
+      "monthlySavings": 11500,
+      "grossPrice": 490000,
+      "subsidyAmount": 78000,
+      "netPrice": 412000,
+      "warrantyPanels": "25 Years Performance",
+      "warrantyInverter": "10 Years Replacement",
+      "inStock": true,
+      "category": "Commercial"
+    }
+  ],
+  "siteVisits": [
+    {
+      "id": "SV-1001",
+      "leadId": "LEAD-103",
+      "customerName": "Sunil Kashyap",
+      "phone": "9712398450",
+      "address": "4/18, Gomti Nagar Extension",
+      "city": "Lucknow",
+      "scheduledDate": "2026-11-12",
+      "scheduledTime": "11:30 AM",
+      "assignedEngineer": "Manish Rawat",
+      "engineerPhone": "9871100223",
+      "roofType": "RCC Flat Roof (Clean, South Facing)",
+      "shadowAnalysis": "Clear horizon, zero shadow between 8 AM - 4 PM",
+      "sanctionedLoadKw": 4,
+      "status": "Scheduled",
+      "notes": "Bring sample mounting brackets and drone for 3D roof mapping."
+    },
+    {
+      "id": "SV-1002",
+      "leadId": "LEAD-102",
+      "customerName": "Pooja Verma",
+      "phone": "9823456781",
+      "address": "WZ-44, Janakpuri",
+      "city": "West Delhi",
+      "scheduledDate": "2026-11-13",
+      "scheduledTime": "02:00 PM",
+      "assignedEngineer": "Amit Saxena",
+      "engineerPhone": "9811443322",
+      "roofType": "Tin Shed Structure",
+      "shadowAnalysis": "Requires elevated GI structure for parapet wall clearance",
+      "sanctionedLoadKw": 5,
+      "status": "Pending Confirmation",
+      "notes": "Verify DISCOM meter connection rating."
+    },
+    {
+      "id": "SV-1003",
+      "leadId": "LEAD-101",
+      "customerName": "Amitabh Sharma",
+      "phone": "9811223344",
+      "address": "Flat 801, Tower C, Prateek Edifice, Sector 107",
+      "city": "Noida",
+      "scheduledDate": "2026-11-14",
+      "scheduledTime": "10:00 AM",
+      "assignedEngineer": "Suresh Nair",
+      "engineerPhone": "9955331122",
+      "roofType": "RCC Terrace",
+      "shadowAnalysis": "Optimal angle, 28-degree tilt recommended",
+      "sanctionedLoadKw": 7,
+      "status": "Scheduled",
+      "notes": "Customer requested 3D CAD shadow simulation report."
+    }
+  ],
+  "installations": [
+    {
+      "id": "INST-101",
+      "customerId": "CUST-101",
+      "customerName": "Vikram Singhania",
+      "phone": "9810012345",
+      "city": "Noida",
+      "capacityKw": 5,
+      "currentStageIndex": 6,
+      "stages": [
+        {
+          "name": "Site Feasibility & Shadow Analysis",
+          "status": "Completed",
+          "date": "2026-08-25"
+        },
+        {
+          "name": "DISCOM Sanction & Design Approval",
+          "status": "Completed",
+          "date": "2026-08-30"
+        },
+        {
+          "name": "Structure Mounting & Civil Work",
+          "status": "Completed",
+          "date": "2026-09-05"
+        },
+        {
+          "name": "Panel Installation & DC/AC Wiring",
+          "status": "Completed",
+          "date": "2026-09-08"
+        },
+        {
+          "name": "DISCOM Net Meter Testing & Inspection",
+          "status": "Completed",
+          "date": "2026-09-12"
+        },
+        {
+          "name": "System Commissioning & Grid Synchronization",
+          "status": "Completed",
+          "date": "2026-09-15"
+        }
+      ],
+      "progressPercent": 100,
+      "assignedLead": "Er. Rajesh Sharma (+91 98119 44332)",
+      "estimatedCompletion": "Completed",
+      "notes": "System generating 22 units/day. Net meter synchronized with UPPCL grid."
+    },
+    {
+      "id": "INST-102",
+      "customerId": "CUST-102",
+      "customerName": "Ananya Mukherjee",
+      "phone": "9830114455",
+      "city": "New Delhi",
+      "capacityKw": 3,
+      "currentStageIndex": 4,
+      "stages": [
+        {
+          "name": "Site Feasibility & Shadow Analysis",
+          "status": "Completed",
+          "date": "2026-10-28"
+        },
+        {
+          "name": "DISCOM Sanction & Design Approval",
+          "status": "Completed",
+          "date": "2026-11-02"
+        },
+        {
+          "name": "Structure Mounting & Civil Work",
+          "status": "Completed",
+          "date": "2026-11-08"
+        },
+        {
+          "name": "Panel Installation & DC/AC Wiring",
+          "status": "In Progress",
+          "date": "2026-11-11"
+        },
+        {
+          "name": "DISCOM Net Meter Testing & Inspection",
+          "status": "Pending",
+          "date": "2026-11-18"
+        },
+        {
+          "name": "System Commissioning & Grid Synchronization",
+          "status": "Pending",
+          "date": "2026-11-22"
+        }
+      ],
+      "progressPercent": 65,
+      "assignedLead": "Er. Vivek Kumar (+91 97118 22331)",
+      "estimatedCompletion": "2026-11-22",
+      "notes": "Mounting completed. Panels being wired today with surge protection box."
+    },
+    {
+      "id": "INST-104",
+      "customerId": "CUST-104",
+      "customerName": "Rajendra Deshmukh",
+      "phone": "9988776655",
+      "city": "Pune",
+      "capacityKw": 10,
+      "currentStageIndex": 2,
+      "stages": [
+        {
+          "name": "Site Feasibility & Shadow Analysis",
+          "status": "Completed",
+          "date": "2026-11-07"
+        },
+        {
+          "name": "DISCOM Sanction & Design Approval",
+          "status": "In Progress",
+          "date": "2026-11-10"
+        },
+        {
+          "name": "Structure Mounting & Civil Work",
+          "status": "Pending",
+          "date": "2026-11-16"
+        },
+        {
+          "name": "Panel Installation & DC/AC Wiring",
+          "status": "Pending",
+          "date": "2026-11-20"
+        },
+        {
+          "name": "DISCOM Net Meter Testing & Inspection",
+          "status": "Pending",
+          "date": "2026-11-28"
+        },
+        {
+          "name": "System Commissioning & Grid Synchronization",
+          "status": "Pending",
+          "date": "2026-12-05"
+        }
+      ],
+      "progressPercent": 30,
+      "assignedLead": "Er. Nitin Shinde (+91 98220 55441)",
+      "estimatedCompletion": "2026-12-05",
+      "notes": "MSEDCL sanction load enhancement application under processing."
+    }
+  ],
+  "invoices": [
+    {
+      "id": "INV-2026-101",
+      "invoiceNumber": "SRPS/2026/089",
+      "customerId": "CUST-101",
+      "customerName": "Vikram Singhania",
+      "phone": "9810012345",
+      "address": "Villa 14, Palm Meadows, Sector 50, Noida",
+      "date": "2026-09-10",
+      "dueDate": "2026-09-15",
+      "items": [
+        {
+          "description": "5 kW High Efficiency Monocrystalline Rooftop Solar System (Turnkey)",
+          "qty": 1,
+          "rate": 260000,
+          "amount": 260000
+        },
+        {
+          "description": "PM Surya Ghar Govt Subsidy (Direct Benefit to Customer Account)",
+          "qty": 1,
+          "rate": -78000,
+          "amount": -78000
+        }
+      ],
+      "grossTotal": 260000,
+      "subsidyDeduction": 78000,
+      "netPayable": 182000,
+      "paidAmount": 182000,
+      "dueAmount": 0,
+      "paymentMode": "NEFT / Bank Transfer",
+      "status": "Paid"
+    },
+    {
+      "id": "INV-2026-102",
+      "invoiceNumber": "SRPS/2026/102",
+      "customerId": "CUST-102",
+      "customerName": "Ananya Mukherjee",
+      "phone": "9830114455",
+      "address": "B-304, Green Valley Apartments, Dwarka Sector 12, Delhi",
+      "date": "2026-11-01",
+      "dueDate": "2026-11-15",
+      "items": [
+        {
+          "description": "3 kW Rooftop Solar Plant including Net Metering & 5-year O&M",
+          "qty": 1,
+          "rate": 165000,
+          "amount": 165000
+        },
+        {
+          "description": "PM Surya Ghar Govt Subsidy DBT",
+          "qty": 1,
+          "rate": -78000,
+          "amount": -78000
+        }
+      ],
+      "grossTotal": 165000,
+      "subsidyDeduction": 78000,
+      "netPayable": 87000,
+      "paidAmount": 60000,
+      "dueAmount": 27000,
+      "paymentMode": "UPI / Cheque",
+      "status": "Partial"
+    },
+    {
+      "id": "INV-2026-103",
+      "invoiceNumber": "SRPS/2026/108",
+      "customerId": "CUST-104",
+      "customerName": "Rajendra Deshmukh",
+      "phone": "9988776655",
+      "address": "Bhosari MIDC, Pune",
+      "date": "2026-11-08",
+      "dueDate": "2026-11-22",
+      "items": [
+        {
+          "description": "10 kW Heavy-Duty Commercial Solar Power Plant",
+          "qty": 1,
+          "rate": 490000,
+          "amount": 490000
+        },
+        {
+          "description": "Central Subsidy Benefit",
+          "qty": 1,
+          "rate": -78000,
+          "amount": -78000
+        }
+      ],
+      "grossTotal": 490000,
+      "subsidyDeduction": 78000,
+      "netPayable": 412000,
+      "paidAmount": 200000,
+      "dueAmount": 212000,
+      "paymentMode": "RTGS Advance",
+      "status": "Partial"
+    }
+  ],
+  "subsidies": [
+    {
+      "id": "SUB-101",
+      "customerId": "CUST-101",
+      "customerName": "Vikram Singhania",
+      "phone": "9810012345",
+      "discom": "UPPCL",
+      "consumerNumber": "UPPCL-88492019",
+      "portalApplicationId": "PMSG-UP-2026-88912",
+      "systemCapacityKw": 5,
+      "centralSubsidy": 78000,
+      "stateSubsidy": 30000,
+      "totalSubsidy": 108000,
+      "stage": "Credited to Bank",
+      "submissionDate": "2026-08-28",
+      "creditedDate": "2026-10-05",
+      "bankAccountMasked": "HDFC Bank A/c ending **3910",
+      "status": "Disbursed"
+    },
+    {
+      "id": "SUB-102",
+      "customerId": "CUST-102",
+      "customerName": "Ananya Mukherjee",
+      "phone": "9830114455",
+      "discom": "BSES Rajdhani",
+      "consumerNumber": "BRPL-10928374",
+      "portalApplicationId": "PMSG-DL-2026-44019",
+      "systemCapacityKw": 3,
+      "centralSubsidy": 78000,
+      "stateSubsidy": 6000,
+      "totalSubsidy": 84000,
+      "stage": "Credited to Bank Account",
+      "submissionDate": "2026-11-03",
+      "creditedDate": "2026-11-11",
+      "bankAccountMasked": "ICICI Bank A/c ending **7721",
+      "status": "Disbursed"
+    },
+    {
+      "id": "SUB-103",
+      "customerId": "CUST-103",
+      "customerName": "Harpreet Singh",
+      "phone": "9872299881",
+      "discom": "PSPCL",
+      "consumerNumber": "PSPCL-300192841",
+      "portalApplicationId": "PMSG-PB-2026-77810",
+      "systemCapacityKw": 8,
+      "centralSubsidy": 78000,
+      "stateSubsidy": 0,
+      "totalSubsidy": 78000,
+      "stage": "Credited to Bank",
+      "submissionDate": "2026-08-15",
+      "creditedDate": "2026-09-22",
+      "bankAccountMasked": "SBI A/c ending **1104",
+      "status": "Disbursed"
+    }
+  ],
+  "supportTickets": [
+    {
+      "id": "TICK-101",
+      "customerId": "CUST-101",
+      "customerName": "Vikram Singhania",
+      "phone": "9810012345",
+      "subject": "Routine Solar Panel Cleaning & Health Checkup",
+      "category": "Panel Cleaning",
+      "priority": "Medium",
+      "status": "Open",
+      "createdAt": "2026-11-10T14:30:00.000Z",
+      "messages": [
+        {
+          "sender": "customer",
+          "name": "Vikram Singhania",
+          "text": "Hello, it has been 2 months since last cleaning. Dust has settled on panels. Please send technical maintenance crew.",
+          "time": "10 Nov 2026, 02:30 PM"
+        },
+        {
+          "sender": "admin",
+          "name": "Shree Rudra Support",
+          "text": "Sure Mr. Vikram, we have scheduled a visit for your 5kW plant on Thursday morning (13 Nov). Our technician Ramesh will carry de-ionized water equipment.",
+          "time": "10 Nov 2026, 04:15 PM"
+        }
+      ]
+    },
+    {
+      "id": "TICK-102",
+      "customerId": "CUST-103",
+      "customerName": "Harpreet Singh",
+      "phone": "9872299881",
+      "subject": "WiFi Dongle Connectivity Setup for Solar App",
+      "category": "Inverter & Monitoring",
+      "priority": "Low",
+      "status": "Resolved",
+      "createdAt": "2026-11-06T11:00:00.000Z",
+      "messages": [
+        {
+          "sender": "customer",
+          "name": "Harpreet Singh",
+          "text": "I changed my home router password and need help reconnecting the solar inverter WiFi dongle.",
+          "time": "06 Nov 2026, 11:00 AM"
+        },
+        {
+          "sender": "admin",
+          "name": "Shree Rudra Support",
+          "text": "Remote support provided over video call. Inverter is now successfully transmitting live generation data.",
+          "time": "06 Nov 2026, 11:45 AM"
+        }
+      ]
+    }
+  ],
+  "generationMetrics": {
+    "CUST-101": {
+      "todayUnitsKwh": 21.4,
+      "currentPowerKw": 3.85,
+      "peakPowerKw": 4.92,
+      "monthUnitsKwh": 586,
+      "lifetimeUnitsKwh": 16420,
+      "lifetimeSavingsInr": 131360,
+      "co2OffsetTons": 13.9,
+      "treesPlanted": 234,
+      "coalSavedTons": 6.8,
+      "hourlyToday": [
+        {
+          "time": "06:00",
+          "kw": 0.1
+        },
+        {
+          "time": "07:00",
+          "kw": 0.8
+        },
+        {
+          "time": "08:00",
+          "kw": 1.9
+        },
+        {
+          "time": "09:00",
+          "kw": 2.8
+        },
+        {
+          "time": "10:00",
+          "kw": 3.6
+        },
+        {
+          "time": "11:00",
+          "kw": 4.4
+        },
+        {
+          "time": "12:00",
+          "kw": 4.9
+        },
+        {
+          "time": "13:00",
+          "kw": 4.8
+        },
+        {
+          "time": "14:00",
+          "kw": 4.2
+        },
+        {
+          "time": "15:00",
+          "kw": 3.3
+        },
+        {
+          "time": "16:00",
+          "kw": 2.1
+        },
+        {
+          "time": "17:00",
+          "kw": 0.9
+        },
+        {
+          "time": "18:00",
+          "kw": 0.2
+        }
+      ],
+      "monthlyHistory": [
+        {
+          "month": "Jun",
+          "units": 610,
+          "savings": 4880
+        },
+        {
+          "month": "Jul",
+          "units": 520,
+          "savings": 4160
+        },
+        {
+          "month": "Aug",
+          "units": 540,
+          "savings": 4320
+        },
+        {
+          "month": "Sep",
+          "units": 590,
+          "savings": 4720
+        },
+        {
+          "month": "Oct",
+          "units": 620,
+          "savings": 4960
+        },
+        {
+          "month": "Nov",
+          "units": 586,
+          "savings": 4688
+        }
+      ]
+    }
+  }
+}

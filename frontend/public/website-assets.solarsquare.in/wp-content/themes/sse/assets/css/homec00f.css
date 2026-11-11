@@ -1,0 +1,697 @@
+.get-solar-section .solar-option {
+    gap: 0.75rem;
+    border-bottom: 1px solid #e2e4ec;
+    padding: 1rem 0;
+}
+.revamp-page-template.home-wrapper {
+    margin-top: 75px;
+}
+.get-solar-section .solar-options > a:last-child .solar-option {
+    border-bottom: none;
+}
+.get-solar-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.get-solar-section .solar-content h3 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #2c3045;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    line-height: 28px;
+}
+.get-solar-section .solar-content p {
+    font-size: 0.875rem;
+    color: #2c3045;
+    margin: 0;
+    width: 210px;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+}
+.get-solar-section .solar-option img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.revamp-page-template.home-wrapper .rating-detail .rating-strip {
+    background-color: #fff0;
+}
+@media (max-width: 767px) {
+    .revamp-page-template.home-wrapper .rating-detail .rating-strip {
+        background-color: #fcf9f1;
+    }
+}
+.revamp-page-template .content-section {
+    left: 0;
+    right: 0;
+    top: 7%;
+    min-height: 300px;
+}
+.revamp-page-template .content-section h2 {
+    font-size: 1rem;
+    color: #182150;
+    font-weight: 600;
+    font-family: "DM Sans", sans-serif;
+}
+.revamp-page-template .content-section h2 strong {
+    background-color: #a5ebff;
+    padding: 0.25rem;
+    font-weight: 600;
+}
+.revamp-page-template .hero-section .content-section h1 {
+    font-weight: 700;
+    font-size: 1.75rem;
+    font-family: "Poppins", sans-serif;
+    line-height: 36px;
+    letter-spacing: 0;
+    min-height: 60px;
+}
+.revamp-page-template .content-section .subheading {
+    font-size: 0.875rem;
+    color: #182150;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+.revamp-page-template .right-side .right-side-box {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 500px;
+}
+.revamp-page-template .right-side .right-side-box .subheading {
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+.revamp-page-template .right-side .right-side-box .save-amount {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+.revamp-page-template .right-side .right-side-box .amount-wrapper {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e4ec;
+    margin-bottom: 1.25rem;
+}
+.revamp-page-template .right-side .right-side-box .amount-wrapper span:first-child {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #1a1f38;
+}
+.revamp-page-template .right-side .right-side-box .amount-wrapper span:last-child {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2c3045;
+}
+.revamp-page-template .right-side .right-side-box .green,
+.revamp-page-template .right-side .right-side-box .amount-wrapper .yearly-save-amount {
+    color: #059669;
+}
+.revamp-page-template .right-side .right-side-box .year-amount {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+.revamp-page-template .right-side .right-side-box .year-amount-heading {
+    color: #5d627c;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.revamp-page-template .right-side .right-side-box .view-more-calculation {
+    color: #2f38cf;
+    font-size: 1rem;
+    margin-top: 1.25rem;
+    font-weight: 600;
+}
+.revamp-page-template #custom-handle .slider-value-box {
+    display: none;
+}
+.revamp-page-template .blogs-webinar-section .webinar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1f38;
+    margin-bottom: 1rem;
+    text-wrap: auto;
+}
+.blogs-webinar-section .webinar-thumbnail img {
+    width: 280px;
+}
+.read-more-section #toggle-read-more-btn {
+    color: #1a1f38;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    background-color: #f5f8fd;
+}
+.read-more-section .content-box {
+    display: none;
+    padding: 10px;
+}
+.revamp-page-template.home-wrapper .get-solar-section {
+    padding-top: 2.5rem;
+}
+.solar-journey-main-section {
+    padding: 40px 16px;
+}
+.revamp-page-template.home-wrapper .hero-section .content-section .cta-btn {
+    background: #fff;
+    width: 270px;
+    margin-top: 0;
+    padding: 12px 42px;
+}
+.revamp-page-template.home-wrapper .hero-section .content-section .cta-btn a {
+    color: #000;
+    margin-left: -10px;
+}
+.revamp-page-template.home-wrapper .hero-section .content-section .cta-btn button{
+    inset: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    z-index: 2;
+    color: #000;
+    margin-left: -10px;
+    background-color: transparent;
+    border: none;
+}
+.revamp-page-template .content-section {
+    width: 330px;
+    color: #fff;
+}
+.revamp-page-template .content-section h2 {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+}
+@media (max-width: 768px) {
+    .revamp-page-template.home-wrapper .featured-image img {
+        height: 720px;
+        object-fit: cover;
+    }
+    .solar-journey-main-section .container {
+        padding: 0;
+    }
+    .revamp-page-template .content-section h2 {
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 12px;
+    }
+    .revamp-page-template .content-section {
+        top: 8%;
+    }
+    .revamp-page-template.home-wrapper .hero-section .content-section .cta-btn {
+        min-width: 260px;
+    }
+}
+@media (min-width: 768px) {
+    a.solar-title.text-decoration-none.solar-cta:hover{
+        background-color: #F5F8FD;
+        border-radius: 12px;
+    }
+    .get-solar-wrapper h2{
+        margin-bottom: 0.5rem;
+    }
+    a.solar-title.text-decoration-none.solar-cta{
+        padding:24px
+    }
+    .background-overlay {
+        background: linear-gradient(155deg, #2c3045 8%, #2c304599 42%, #2c304500 56%);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 600px;
+    }
+    .revamp-page-template.home-wrapper .rating-detail .rating-strip {
+        background-color: #ffffff29;
+        border-radius: 12px;
+        padding: 12px 32px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 18px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgb(255 255 255 / 0.3);
+        box-shadow: 0 8px 32px rgb(0 0 0 / 0.1);
+        transition: transform 0.3s ease;
+    }
+    .revamp-page-template.home-wrapper .rating-strip .rate-span {
+        font-weight: 500;
+        font-size: 18px;
+        color: #e9b35e;
+    }
+    .revamp-page-template.home-wrapper .rating-strip span {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .rating-home-desk {
+        bottom: 24px;
+    }
+    .revamp-page-template.home-wrapper .get-solar-section {
+        padding: 6rem 0;
+    }
+    .home-wrapper .solar-options {
+        gap: 0px;
+    }
+    .get-solar-section .solar-option {
+        border: none;
+        padding: 0;
+    }
+    .get-solar-section h2 {
+        color: #1a1f38;
+        font-size: 2.5rem;
+        margin-bottom: 56px;
+    }
+    .get-solar-section .solar-content h3 {
+        color: #2c3045;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+        line-height: 28px;
+    }
+    .get-solar-section .solar-content p {
+        font-size: 1rem;
+        width: 220px;
+        line-height: 24px;
+    }
+    .revamp-page-template .content-section {
+        width: 630px;
+        right: auto;
+        top: 108px;
+        color: #fff;
+    }
+    .revamp-page-template .content-section h2 {
+        font-size: 32px;
+        line-height: 44px;
+        font-weight: 600;
+        letter-spacing: 0;
+        margin-bottom: 28px;
+        margin-top: 20px;
+        color: #fff;
+    }
+    .revamp-page-template .content-section .subheading {
+        font-size: 1.4rem;
+        letter-spacing: -1px;
+    }
+    .revamp-page-template.home-wrapper .content-section .subheading {
+        margin-top: 12px;
+        margin-bottom: 5px;
+    }
+    .revamp-page-template .content-section .cta-btn {
+        padding: 14.37px 40px;
+    }
+    .revamp-page-template .content-section .cta-btn a {
+        font-size: 0.875rem;
+    }
+    .excellance-inner-section .goodzero-pride .card-wrapper {
+        height: 160px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .revamp-page-template.home-wrapper .featured-image img {
+        width: 100%;
+    }
+    .revamp-page-template.home-wrapper .content-section h1 {
+        font-size: 3.5rem;
+        line-height: 4rem;
+        letter-spacing: -1px;
+    }
+    .solar-journey-main-section .solar-journey-wrapper .left-section {
+        width: 60%;
+        padding: 72px 0 25px 0;
+    }
+    .solar-journey-main-section .solar-option.d-flex.align-items-center {
+        position: relative;
+    }
+    .solar-journey-main-section .solar-journey-section .solar-description {
+        font-size: 1rem;
+        padding-bottom: 45px;
+        margin-bottom: 0;
+    }
+    .solar-journey-wrapper .right-section-wrapper {
+        max-width: unset;
+    }
+    .solar-journey-wrapper .right-section {
+        width: 40%;
+    }
+    .solar-journey-main-section {
+        padding: 0;
+    }
+    .solar-journey-wrapper .right-section-wrapper {
+        max-width: unset !important;
+    }
+    .revamp-page-template .solar-journey-wrapper .right-section .right-section-wrapper {
+        max-width: unset;
+        margin: 0 auto;
+        position: relative;
+        height: 780px;
+    }
+    .solar-journey-wrapper .right-section-wrapper img {
+        margin-top: 0;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        height: 100%;
+    }
+    .solar-journey-wrapper .left-section {
+        width: 60%;
+        padding: 72px 0 25px;
+    }
+}
+.solar-journey-section .solar-content::after {
+    border-left: 1px dashed #e2e4ec;
+    height: calc(100% - 40px);
+    content: "";
+    width: 1px;
+    display: block;
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+}
+.solar-journey-section .solar-content {
+    position: relative;
+    padding-left: 60px;
+}
+
+/* See Solar Before You Buy — home EC promo section */
+.home-see-solar-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #121621;
+    background-image: url("https://website-assets.solarsquare.in/wp-content/themes/sse/assets/images/home-see-solar-base-bg.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.home-see-solar-inner {
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    /* Past this width the media column outgrows the photo's aspect ratio and
+       `cover` starts cropping the storefront out of frame. */
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.home-see-solar-inner::before {
+    content: "";
+    position: absolute;
+    width: 1100px;
+    height: 650px;
+    top: -56px;
+    left: -320px;
+    opacity: 0.36;
+    background-image: url("https://website-assets.solarsquare.in/wp-content/themes/sse/assets/images/home-see-solar-ellipse-bg.webp");
+    background-repeat: no-repeat;
+    background-size: 81% 76%;
+    background-position: center;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 0;
+}
+.home-see-solar-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding: 32px 20px 28px;
+    flex: 1 1 auto;
+    background-color: transparent;
+}
+.home-see-solar-content-inner {
+    position: relative;
+    z-index: 1;
+}
+.home-see-solar-title {
+    font-family: Poppins, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+    color: #fff;
+}
+.home-see-solar-subtitle {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+    color: rgb(255 255 255 / 0.92);
+    margin-bottom: 20px;
+    max-width: 34rem;
+}
+.home-see-solar-benefits {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.home-see-solar-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+    color: #fff;
+}
+.home-see-solar-benefit-icon {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+.home-see-solar-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 210px;
+    height: 50px;
+    margin-top: 8px;
+    padding: 12px 20px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.home-see-solar-cta:hover,
+.home-see-solar-cta:focus {
+    background-color: #fff;
+    color: #182150;
+}
+/* Feather the photo into the section background instead of painting a flat
+   overlay on top of it — a solid-colour overlay leaves a visible seam against
+   the textured backdrop. */
+.home-see-solar-media {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    height: 220px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        rgb(0 0 0 / 0) 0%,
+        rgb(0 0 0 / 0.03) 3%,
+        rgb(0 0 0 / 0.11) 6%,
+        rgb(0 0 0 / 0.23) 9%,
+        rgb(0 0 0 / 0.38) 12%,
+        rgb(0 0 0 / 0.55) 15%,
+        rgb(0 0 0 / 0.71) 18%,
+        rgb(0 0 0 / 0.84) 21%,
+        rgb(0 0 0 / 0.93) 24%,
+        rgb(0 0 0 / 0.98) 27%,
+        rgb(0 0 0 / 1) 30%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        rgb(0 0 0 / 0) 0%,
+        rgb(0 0 0 / 0.03) 3%,
+        rgb(0 0 0 / 0.11) 6%,
+        rgb(0 0 0 / 0.23) 9%,
+        rgb(0 0 0 / 0.38) 12%,
+        rgb(0 0 0 / 0.55) 15%,
+        rgb(0 0 0 / 0.71) 18%,
+        rgb(0 0 0 / 0.84) 21%,
+        rgb(0 0 0 / 0.93) 24%,
+        rgb(0 0 0 / 0.98) 27%,
+        rgb(0 0 0 / 1) 30%
+    );
+}
+.home-see-solar-slider:not(.slick-initialized) .home-see-solar-slide:not(:first-child) {
+    display: none;
+}
+.home-see-solar-slider,
+.home-see-solar-slide,
+.home-see-solar-slider .slick-list,
+.home-see-solar-slider .slick-track {
+    height: 100%;
+}
+.home-see-solar-slide-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.home-see-solar-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: auto;
+}
+.home-see-solar-dots .slick-dots {
+    position: static;
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.home-see-solar-dots .slick-dots li {
+    width: 8px;
+    height: 8px;
+    margin: 0;
+}
+.home-see-solar-dots .slick-dots li button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 1;
+}
+.home-see-solar-dots .slick-dots li button::before {
+    content: none;
+    display: none;
+}
+.home-see-solar-dots .slick-dots li:only-child {
+    display: none;
+}
+.home-see-solar-dots .slick-dots li.slick-active button {
+    background: var(--Brand-400, #2F38CF);
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .home-see-solar-inner::before {
+        width: 1280px;
+        height: 760px;
+        top: -90px;
+        left: max(-415px, calc(50% - 1085px));
+    }
+    .home-see-solar-inner {
+        min-height: 538px;
+        max-height: 538px;
+        height: 538px;
+    }
+    .home-see-solar-content {
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        /* Measured against the capped inner width, not the viewport, so the
+           text keeps lining up with the page container on wide screens. */
+        padding: 40px 40px 40px max(12px, calc((min(100vw, 1920px) - 1140px) / 2 + 12px));
+    }
+    .home-see-solar-content-inner {
+        max-width: 32rem;
+    }
+    .home-see-solar-title {
+        font-size: 2.25rem;
+        line-height: 44px;
+        margin-bottom: 12px;
+    }
+    .home-see-solar-subtitle {
+        font-size: 1.25rem;
+        line-height: 28px;
+        margin-bottom: 24px;
+    }
+    .home-see-solar-benefit-item {
+        font-size: 1rem;
+    }
+    .home-see-solar-benefits {
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+    .home-see-solar-cta {
+        margin-top: 0;
+    }
+    .home-see-solar-media {
+        flex: 1 1 50%;
+        height: 538px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .home-see-solar-content {
+        padding-left: max(12px, calc((min(100vw, 1920px) - 1320px) / 2 + 12px));
+    }
+}
+
+@media (max-width: 767px) {
+    .home-see-solar-inner::before {
+        width: 720px;
+        height: 430px;
+        top: -40px;
+        left: -180px;
+        clip-path: inset(0 0 45% 0);
+    }
+    .home-see-solar-content {
+        padding: 28px 20px 24px;
+        background-color: #121621;
+        background-image: url("https://website-assets.solarsquare.in/wp-content/themes/sse/assets/images/home-see-solar-base-bg.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .home-see-solar-content-inner {
+        text-align: left;
+    }
+    .home-see-solar-cta {
+        display: flex;
+        margin: 16px auto 0;
+    }
+    .home-see-solar-media {
+        margin-top: 0;
+        height: 240px;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+/* Single hero image (no slider): fixed height so the LCP image never shifts. */
+.revamp-page-template.home-wrapper .home-hero-single {
+    height: 720px;
+    overflow: hidden;
+}
+.revamp-page-template.home-wrapper .home-hero-single .home-hero-slide,
+.revamp-page-template.home-wrapper .home-hero-single picture,
+.revamp-page-template.home-wrapper .home-hero-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media (min-width: 768px) {
+    .revamp-page-template.home-wrapper .home-hero-single {
+        height: 600px;
+    }
+}

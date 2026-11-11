@@ -1,0 +1,16 @@
+.sitemap-container{font-family:'DM Sans',sans-serif;margin-top:100px;margin-bottom:80px}.sitemap-container
+h1{font-size:2rem;margin-bottom:30px;text-align:left;border-bottom:2px solid #eee;padding-bottom:10px}.sitemap-container
+h2{font-size:18px;font-weight:700;color:#1A1F38;margin-bottom:16px}.sitemap-container
+h3{color:#5D627C;font-size:16px;font-weight:600}.sitemap-container .sitemap-block ul li
+a{text-decoration:none;color:#5D627C;font-size:16px;font-weight:400}.sitemap-top-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:30px;margin-bottom:40px}.pages-grid .sitemap-block:nth-child(3){grid-column:span 3}.pages-grid .sitemap-block:nth-child(3)  ul{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;align-items:flex-start}.city-state-grid>.sitemap-block:nth-child(1),.city-state-grid>.sitemap-block:nth-child(2),.city-state-grid>.sitemap-block:nth-child(4){flex-direction:column;gap:32px}.city-state-grid>.sitemap-block.maharashtra,.city-state-grid>.sitemap-block.telangana{grid-row:span 2}.sitemap-block
+ul{list-style:none;margin:0;padding:0}.sitemap-block ul
+li{margin:8px
+0}.sitemap-columns{display:grid;grid-template-columns:1fr;gap:10px}.state-block
+h3{margin-bottom:5px}.city-list
+li{margin-left:10px}.blogs-columns,.webinars-columns{display:grid;grid-template-columns:repeat(2, 1fr);gap:20px 76px}.blog-item a,
+.webinar-item
+a{color:#5D627C;text-decoration:none;font-weight:600;font-size:16px}.blog-meta,.webinar-meta{font-size:14px;color:#5D627C;margin-top:2px}.webinar-block{margin-top:45px}.breadcrumb,.breadcrumb
+a{color:#5D627C;text-decoration:none;font-size:14px;margin-right:5px}.breadcrumb{margin-bottom:45px}.state-block.tamil-nadu,.state-block.madhya-pradesh{}@media (max-width: 1024px){.sitemap-top-grid{grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))}}@media (max-width: 768px){.sitemap-container
+h1{font-size:1.6rem}.sitemap-container
+h2{margin-bottom:0}.sitemap-top-grid,.blogs-columns,.webinars-columns{grid-template-columns:1fr}.city-state-grid{display:grid !important;grid-template-columns:repeat(2, 1fr);gap:20px}.city-state-grid>.sitemap-block:nth-child(1),.city-state-grid>.sitemap-block:nth-child(2),.city-state-grid>.sitemap-block:nth-child(4){grid-template-columns:1fr 1fr;gap:24px}.sitemap-top-grid{grid-template-columns:1fr 1fr;gap:24px}.solar-block{grid-column:span 2}.solar-block
+ul{grid-template-columns:1fr 1fr;gap:24px}.state-block.delhi{order:1}.state-block.gujarat{order:2}.state-block.karnataka{order:3}.state-block.madhya-pradesh{order:4;margin-top:0}.state-block.maharashtra{order:5}.state-block.rajasthan{order:6}.state-block.tamil-nadu{order:7;margin-top:-100px}.state-block.telangana{order:8}.state-block.uttar-pradesh{order:9}.pages-grid .sitemap-block:nth-child(3) ul{grid-template-columns:1fr 1fr;gap:0 24px}}
