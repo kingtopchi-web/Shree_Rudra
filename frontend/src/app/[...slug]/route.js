@@ -213,6 +213,21 @@ function transformHtml(html) {
   // Replace branded service van image across subpages
   res = res.replace(/\/cdn\.solarsquare\.in\/blog\/wp-content\/uploads\/2026\/10\/14140842\/Untitled-design1-1\.webp/gi, '/images/shree-rudra-van.jpg');
 
+  // Replace Experience Centre background videos and posters with rebranded showroom photo
+  res = res.replace(/<video([^>]*class=["'][^"']*contact-hero-video[^"']*["'][^>]*)>[\s\S]*?<\/video>/gi, (_, attrs) => {
+    const clsMatch = attrs.match(/class=["']([^"']*)["']/i);
+    const cls = clsMatch ? clsMatch[1] : 'contact-hero-video';
+    return `<img class="${cls}" src="/images/sr-wakad-wide.jpg" alt="Shree Rudra Power Systems Experience Centre" style="object-fit:cover;width:100%;height:100%;" />`;
+  });
+  res = res.replace(/(?:https?:)?\/\/[^"'\s)]*(?:desktop_fast|mobile_fast)\.webm[^"'\s)]*/gi, '/images/sr-wakad-wide.jpg');
+  res = res.replace(/(?:https?:)?\/\/[^"'\s)]*(?:desktop_poster|mobile_poster)[^"'\s)]*\.(?:webp|jpg|jpeg|png)/gi, '/images/sr-wakad-wide.jpg');
+
+  // Replace Experience Centre Virtual Tour YouTube embed (peit2PNIE5Q) with rebranded showroom image
+  res = res.replace(/<button[^>]*ec-virtual-play-btn[\s\S]*?<\/button>/gi, '');
+  res = res.replace(/<iframe[^>]*peit2PNIE5Q[\s\S]*?<\/iframe>/gi, '<img src="/images/sr-virtual-tour.jpg" alt="Shree Rudra Power Systems Virtual Tour" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;" />');
+  res = res.replace(/data-yt=["']peit2PNIE5Q["']/gi, 'data-yt=""');
+  res = res.replace(/(?:https?:)?\/\/(?:www\.)?youtube\.com\/embed\/peit2PNIE5Q[^"'\s<]*/gi, '/images/sr-virtual-tour.jpg');
+
   return res;
 }
 
