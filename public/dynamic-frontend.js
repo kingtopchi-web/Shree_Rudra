@@ -99,6 +99,7 @@
       footerLoc.parentNode.insertBefore(footerMain, footerLoc.nextSibling);
     }
     balanceFooterLocations();
+    balanceMainFooter();
     cleanAllSolarSquareLinks();
     updateContactInfoDOM();
     setupPincodeLookup();
@@ -264,6 +265,181 @@
         </div>
       `;
     }).join('');
+  }
+
+  // 1c. Balance Main Dark-Blue Footer (4 equal-height columns, 6 clean links each, no word-break on email)
+  function balanceMainFooter() {
+    const footer = document.querySelector('div.footer');
+    if (!footer) return;
+
+    const row = footer.querySelector('.container > .row');
+    if (!row) return;
+
+    if (!document.getElementById('sr-balanced-footer-css')) {
+      const st = document.createElement('style');
+      st.id = 'sr-balanced-footer-css';
+      st.textContent = `
+        div.footer .sr-footer-grid {
+          display: grid;
+          grid-template-columns: 1.05fr 1fr 1fr 1.25fr;
+          gap: 28px;
+          align-items: stretch;
+          padding: 36px 12px;
+        }
+        div.footer .sr-footer-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-right: 20px;
+          border-right: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        div.footer .sr-footer-col:last-child {
+          border-right: none;
+          padding-right: 0;
+        }
+        div.footer .sr-footer-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 14px 0;
+        }
+        div.footer .sr-footer-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        div.footer .sr-footer-list a {
+          color: rgba(255, 255, 255, 0.85);
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 1.4;
+          white-space: nowrap;
+        }
+        div.footer .sr-footer-list a:hover {
+          color: #ffffff;
+          text-decoration: underline;
+        }
+        div.footer .sr-contact-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          margin-bottom: 12px;
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 13.5px;
+          line-height: 1.45;
+        }
+        div.footer .sr-contact-item a {
+          color: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+        }
+        div.footer .sr-social-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: auto;
+          padding-top: 8px;
+        }
+        div.footer .sr-social-btn {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.12);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 15px;
+        }
+        @media (max-width: 991px) {
+          div.footer .sr-footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+          }
+          div.footer .sr-footer-col {
+            border-right: none;
+            padding-right: 0;
+          }
+        }
+        @media (max-width: 575px) {
+          div.footer .sr-footer-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+      `;
+      document.head.appendChild(st);
+    }
+
+    const socialImgs = Array.from(footer.querySelectorAll('.social-media-icons a img, .footer-social a img'));
+    const socialIconsHtml = socialImgs.length >= 4
+      ? socialImgs.slice(0, 4).map(img => `<a href="#" class="sr-social-btn">${img.outerHTML}</a>`).join('')
+      : `
+        <a href="#" class="sr-social-btn" aria-label="Facebook">f</a>
+        <a href="#" class="sr-social-btn" aria-label="Instagram">ig</a>
+        <a href="#" class="sr-social-btn" aria-label="YouTube">▶</a>
+        <a href="#" class="sr-social-btn" aria-label="LinkedIn">in</a>
+      `;
+
+    row.className = 'sr-footer-grid';
+    row.innerHTML = `
+      <div class="sr-footer-col">
+        <div class="footer-brand-image" style="margin-bottom:14px;">
+          <a href="/">
+            <img class="brand-logo" src="/images/logo.png" alt="Shree Rudra Power Systems" style="height:82px; max-height:86px; width:auto; object-fit:contain; border:none !important; outline:none !important; background:transparent !important; box-shadow:none !important; filter:brightness(0) invert(1) !important;">
+          </a>
+        </div>
+        <p style="margin:0 0 14px 0; font-size:13.5px; line-height:1.55; color:rgba(255,255,255,0.82);">
+          India's Trusted Rooftop Solar Partner — Clean Energy &amp; Guaranteed Savings.
+        </p>
+        <div class="footer-mii" style="margin-top:auto; font-size:14px; color:#ffffff;">Proudly made in India ❤️</div>
+      </div>
+
+      <div class="sr-footer-col">
+        <div class="sr-footer-title">Our Offerings</div>
+        <ul class="sr-footer-list">
+          <li><a href="/homes">Homes</a></li>
+          <li><a href="/commercial">Commercial</a></li>
+          <li><a href="/housing-society">Housing Society</a></li>
+          <li><a href="/on-grid-solar-system">On-Grid Solar</a></li>
+          <li><a href="/off-grid-solar-system">Off-Grid Solar</a></li>
+          <li><a href="/solar-calculator">Solar Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="sr-footer-col">
+        <div class="sr-footer-title">Quick Links</div>
+        <ul class="sr-footer-list">
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/pm-surya-ghar-muft-bijli-yojana">PM Surya Ghar</a></li>
+          <li><a href="/solar-experience-centre">Experience Centre</a></li>
+          <li><a href="/solarpro">SolarPro Partner</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="sr-footer-col">
+        <div class="sr-footer-title">Contact Us</div>
+        <div class="sr-contact-item">
+          <span>📞</span>
+          <a href="tel:+918354822499" style="white-space:nowrap;">+91 8354822499</a>
+        </div>
+        <div class="sr-contact-item">
+          <span>✉️</span>
+          <a href="mailto:shreerudrapowersystems@gmail.com" style="white-space:nowrap;">shreerudrapowersystems@gmail.com</a>
+        </div>
+        <div class="sr-contact-item">
+          <span>📍</span>
+          <a href="https://maps.google.com/?q=Indira+Nagar,+Lucknow,+Uttar+Pradesh+226016" target="_blank" rel="noopener">Indira Nagar, Lucknow, Uttar Pradesh - 226016</a>
+        </div>
+        <div class="sr-social-row">${socialIconsHtml}</div>
+      </div>
+    `;
   }
 
   // 2. Clean all external SolarSquare & third-party redirect links across the page
