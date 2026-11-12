@@ -204,6 +204,9 @@ function transformHtml(html) {
   res = res.replace(/https:\/\/maps\.google\.com\/\?q=1101-B[^"'\s>]+/gi, 'https://maps.google.com/?q=Indira+Nagar,+Lucknow,+Uttar+Pradesh+226016');
   res = res.replace(/>\s*1101-B,[\s\S]*?Maharashtra\s*400058\s*<\/a>/gi, '>Indira Nagar, Lucknow, Uttar Pradesh - 226016</a>');
 
+  // Remove Real-time Monitoring App section across pages
+  res = res.replace(/<section[^>]*class=["']?[^"']*\bapp-section\b[\s\S]*?<\/section>/gi, '');
+
   // Restore protected asset URLs untouched
   res = res.replace(/__PROTECTED_ASSET_(\d+)__/g, (_, i) => protectedUrls[Number(i)]);
 
