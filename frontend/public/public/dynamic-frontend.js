@@ -122,6 +122,24 @@
       const style = document.createElement('style');
       style.id = 'sr-compact-spacing';
       style.textContent = `
+        nav.navbar,
+        .navbar.navbar-expand-lg {
+          min-height: 88px !important;
+          padding-top: 12px !important;
+          padding-bottom: 12px !important;
+        }
+        nav.navbar .container {
+          min-height: 64px !important;
+          align-items: center !important;
+        }
+        @media (max-width: 768px) {
+          nav.navbar,
+          .navbar.navbar-expand-lg {
+            min-height: 76px !important;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+          }
+        }
         .get-solar-section,
         .good-zero-rates-section,
         .goodzero-pride,
