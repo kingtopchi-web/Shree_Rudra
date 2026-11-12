@@ -208,6 +208,39 @@
           padding-top: 0 !important;
           padding-bottom: 0 !important;
         }
+        .cm-section-2,
+        .cm-section-3,
+        .cm-section-4,
+        .cm-section-5,
+        .cm-section-6,
+        .cm-section-7,
+        .cm-section-8,
+        .sp-section-8 {
+          min-height: auto !important;
+          padding-top: 28px !important;
+          padding-bottom: 28px !important;
+        }
+        .cm-section-7 .testimonials-slider-desktop,
+        .cm-section-7 .card-wrapper {
+          margin-bottom: 12px !important;
+        }
+        .blogs-list-section,
+        .general-category-container {
+          padding-bottom: 32px !important;
+        }
+        .middle-space-section {
+          height: 18px !important;
+          min-height: 0 !important;
+        }
+        .pg-sc-mobile {
+          min-height: auto !important;
+          padding-bottom: 24px !important;
+        }
+        .testimonial-city-page-section,
+        .solar-estimate-section {
+          padding-top: 32px !important;
+          padding-bottom: 32px !important;
+        }
         .read-more-section {
           padding-top: 14px !important;
           padding-bottom: 10px !important;
