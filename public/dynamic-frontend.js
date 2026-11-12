@@ -135,6 +135,23 @@
           border-bottom: none !important;
           box-shadow: none !important;
         }
+        nav.navbar,
+        .navbar.navbar-expand-lg {
+          border-bottom: 1px solid #e5e7eb !important;
+          box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+        }
+        .signup-electricity-header-right-corner-button,
+        nav.navbar .btn-open-lead-form {
+          background-color: #d91e2a !important;
+          border-color: #d91e2a !important;
+          color: #ffffff !important;
+        }
+        .signup-electricity-header-right-corner-button:hover,
+        nav.navbar .btn-open-lead-form:hover {
+          background-color: #b71822 !important;
+          border-color: #b71822 !important;
+          color: #ffffff !important;
+        }
         header::before,
         header::after,
         nav.navbar::before,
