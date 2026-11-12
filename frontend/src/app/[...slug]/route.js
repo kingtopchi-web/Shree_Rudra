@@ -173,7 +173,7 @@ function transformHtml(html) {
       return `href="${localPath}"`;
     }
 
-    if (/solarsquare|keka\.com|com\.sse\.consumer/i.test(url)) {
+    if (/solarsquare|solar\.square|keka\.com|com\.sse\.consumer/i.test(url)) {
       return 'href="#"';
     }
 

@@ -145,8 +145,10 @@
         } catch (e) {
           a.setAttribute('href', '#');
         }
-      } else if (href.includes('solarsquare') || href.includes('keka.com') || href.includes('com.sse.consumer')) {
+      } else if (href.includes('solarsquare') || href.includes('solar.square') || href.includes('keka.com') || href.includes('com.sse.consumer')) {
         a.setAttribute('href', '#');
+        a.removeAttribute('target');
+      } else if (href === '#' && a.hasAttribute('target')) {
         a.removeAttribute('target');
       }
     });
