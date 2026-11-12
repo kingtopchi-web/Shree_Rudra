@@ -122,11 +122,26 @@
       const style = document.createElement('style');
       style.id = 'sr-compact-spacing';
       style.textContent = `
+        header,
+        #masthead,
+        .site-header,
+        .navbar-wrapper,
         nav.navbar,
         .navbar.navbar-expand-lg {
           min-height: 88px !important;
           padding-top: 12px !important;
           padding-bottom: 12px !important;
+          border-top: none !important;
+          border-bottom: none !important;
+          box-shadow: none !important;
+        }
+        header::before,
+        header::after,
+        nav.navbar::before,
+        nav.navbar::after {
+          display: none !important;
+          content: none !important;
+          border: none !important;
         }
         nav.navbar .container {
           min-height: 64px !important;
