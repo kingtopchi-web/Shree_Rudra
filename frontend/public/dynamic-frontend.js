@@ -88,6 +88,7 @@
   };
 
   function init() {
+    injectCompactSpacingStyles();
     setupBranding();
     document.querySelectorAll('.footer-logo .brand-logo, .footer-brand-image img, footer img.brand-logo').forEach(img => {
       img.style.setProperty('filter', 'brightness(0) invert(1)', 'important');
@@ -106,6 +107,101 @@
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+
+  // 0. Compact Excessive White Space Across All Pages
+  function injectCompactSpacingStyles() {
+    if (!document.getElementById('sr-compact-spacing')) {
+      const style = document.createElement('style');
+      style.id = 'sr-compact-spacing';
+      style.textContent = `
+        .get-solar-section,
+        .good-zero-rates-section,
+        .goodzero-pride,
+        #solar-calc-blog-component,
+        .testimonials-section,
+        .in-the-news-section,
+        .experience-centre-section,
+        .ec-section,
+        .partner-section,
+        .awards-section,
+        .process-section,
+        .benefits-section,
+        .solar-solutions-section {
+          padding-top: 28px !important;
+          padding-bottom: 28px !important;
+        }
+        .goodzero-promise,
+        .faq-section,
+        .common-faq {
+          margin-top: 24px !important;
+          margin-bottom: 24px !important;
+          padding-top: 20px !important;
+          padding-bottom: 20px !important;
+        }
+        .in-news-slider {
+          margin-top: 12px !important;
+          margin-bottom: 24px !important;
+        }
+        .divider {
+          margin-top: 14px !important;
+          margin-bottom: 14px !important;
+        }
+        .wp-block-spacer {
+          height: 16px !important;
+          min-height: 16px !important;
+        }
+        .space-section {
+          height: 12px !important;
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+        }
+        .read-more-section,
+        footer.footer,
+        .footer-wrapper {
+          padding-top: 28px !important;
+          padding-bottom: 24px !important;
+          margin-top: 12px !important;
+        }
+        @media (max-width: 768px) {
+          .get-solar-section,
+          .good-zero-rates-section,
+          .goodzero-pride,
+          #solar-calc-blog-component,
+          .testimonials-section,
+          .in-the-news-section {
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+          }
+          .goodzero-promise,
+          .faq-section,
+          .common-faq {
+            margin-top: 16px !important;
+            margin-bottom: 16px !important;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Clamp any remaining oversized (>=48px) vertical paddings/margins on page sections
+    const blocks = document.querySelectorAll('main > section, main > div, .entry-content > section, .entry-content > div, .wp-block-group');
+    blocks.forEach(el => {
+      if (
+        el.classList.contains('hero-section') ||
+        el.closest('.hero-section') ||
+        el.closest('header') ||
+        el.closest('.modal') ||
+        el.id === 'sr-calc-modal'
+      ) {
+        return;
+      }
+      const cs = window.getComputedStyle(el);
+      if (parseFloat(cs.paddingTop) >= 48) el.style.setProperty('padding-top', '26px', 'important');
+      if (parseFloat(cs.paddingBottom) >= 48) el.style.setProperty('padding-bottom', '26px', 'important');
+      if (parseFloat(cs.marginTop) >= 48) el.style.setProperty('margin-top', '20px', 'important');
+      if (parseFloat(cs.marginBottom) >= 48) el.style.setProperty('margin-bottom', '20px', 'important');
+    });
   }
 
   // 1. Branding: enforce Shree Rudra Power Systems and large transparent logo
