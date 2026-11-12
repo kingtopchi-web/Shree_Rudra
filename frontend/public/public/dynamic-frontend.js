@@ -165,10 +165,12 @@
         }
         .read-more-section,
         footer.footer,
+        div.footer,
         .footer-wrapper {
-          padding-top: 28px !important;
-          padding-bottom: 24px !important;
+          padding-top: 16px !important;
+          padding-bottom: 8px !important;
           margin-top: 12px !important;
+          margin-bottom: 0 !important;
         }
         @media (max-width: 768px) {
           .get-solar-section,
@@ -282,9 +284,9 @@
         div.footer .sr-footer-grid {
           display: grid;
           grid-template-columns: 1.05fr 1fr 1fr 1.25fr;
-          gap: 28px;
+          gap: 24px;
           align-items: stretch;
-          padding: 36px 12px;
+          padding: 14px 12px 8px 12px;
         }
         div.footer .sr-footer-col {
           display: flex;
