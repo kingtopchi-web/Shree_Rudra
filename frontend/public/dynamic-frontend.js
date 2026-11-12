@@ -89,6 +89,9 @@
 
   function init() {
     setupBranding();
+    document.querySelectorAll('.footer-logo .brand-logo, .footer-brand-image img, footer img.brand-logo').forEach(img => {
+      img.style.setProperty('filter', 'brightness(0) invert(1)', 'important');
+    });
     cleanAllSolarSquareLinks();
     updateContactInfoDOM();
     setupPincodeLookup();
