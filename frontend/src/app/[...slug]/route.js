@@ -210,6 +210,9 @@ function transformHtml(html) {
   // Restore protected asset URLs untouched
   res = res.replace(/__PROTECTED_ASSET_(\d+)__/g, (_, i) => protectedUrls[Number(i)]);
 
+  // Replace branded service van image across subpages
+  res = res.replace(/\/cdn\.solarsquare\.in\/blog\/wp-content\/uploads\/2026\/10\/14140842\/Untitled-design1-1\.webp/gi, '/images/shree-rudra-van.jpg');
+
   return res;
 }
 
