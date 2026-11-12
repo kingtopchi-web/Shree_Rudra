@@ -375,15 +375,20 @@
       document.head.appendChild(st);
     }
 
-    const socialImgs = Array.from(footer.querySelectorAll('.social-media-icons a img, .footer-social a img'));
-    const socialIconsHtml = socialImgs.length >= 4
-      ? socialImgs.slice(0, 4).map(img => `<a href="#" class="sr-social-btn">${img.outerHTML}</a>`).join('')
-      : `
-        <a href="#" class="sr-social-btn" aria-label="Facebook">f</a>
-        <a href="#" class="sr-social-btn" aria-label="Instagram">ig</a>
-        <a href="#" class="sr-social-btn" aria-label="YouTube">▶</a>
-        <a href="#" class="sr-social-btn" aria-label="LinkedIn">in</a>
-      `;
+    const socialIconsHtml = `
+      <a href="#" class="sr-social-btn" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+      </a>
+      <a href="#" class="sr-social-btn" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="sr-social-btn" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" class="sr-social-btn" aria-label="LinkedIn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    `;
 
     row.className = 'sr-footer-grid';
     row.innerHTML = `
@@ -426,15 +431,15 @@
       <div class="sr-footer-col">
         <div class="sr-footer-title">Contact Us</div>
         <div class="sr-contact-item">
-          <span>📞</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <a href="tel:+918354822499" style="white-space:nowrap;">+91 8354822499</a>
         </div>
         <div class="sr-contact-item">
-          <span>✉️</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:shreerudrapowersystems@gmail.com" style="white-space:nowrap;">shreerudrapowersystems@gmail.com</a>
         </div>
         <div class="sr-contact-item">
-          <span>📍</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <a href="https://maps.google.com/?q=Indira+Nagar,+Lucknow,+Uttar+Pradesh+226016" target="_blank" rel="noopener">Indira Nagar, Lucknow, Uttar Pradesh - 226016</a>
         </div>
         <div class="sr-social-row">${socialIconsHtml}</div>
