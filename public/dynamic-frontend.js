@@ -128,7 +128,7 @@
     document.title = 'Shree Rudra Power Systems - Rooftop Solar Solutions';
   }
 
-  // 2. Clean all external SolarSquare links across the page
+  // 2. Clean all external SolarSquare & third-party redirect links across the page
   function cleanAllSolarSquareLinks() {
     const anchors = document.querySelectorAll('a[href]');
     anchors.forEach(a => {
@@ -144,8 +144,13 @@
           }
         } catch (e) {
           a.setAttribute('href', '#');
+          a.removeAttribute('target');
         }
-      } else if (href.includes('solarsquare') || href.includes('solar.square') || href.includes('keka.com') || href.includes('com.sse.consumer')) {
+      } else if (
+        /^https?:\/\//i.test(href) &&
+        !href.includes(window.location.host) &&
+        !/wa\.me|api\.whatsapp\.com|maps\.google\.com/i.test(href)
+      ) {
         a.setAttribute('href', '#');
         a.removeAttribute('target');
       } else if (href === '#' && a.hasAttribute('target')) {

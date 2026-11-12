@@ -135,6 +135,25 @@ function transformHtml(html) {
     return token;
   });
 
+  // Purge external SolarSquare / social / third-party redirect links BEFORE brand text replacement
+  // (Prevents unquoted href=https://...SolarSquare... from splitting on spaces into https://Shree)
+  res = res.replace(/<a\b([^>]*?)href=["']?(https?:\/\/[^"'\s>]+)["']?([^>]*)>/gi, (match, pre, url, post) => {
+    if (/wa\.me|api\.whatsapp\.com|maps\.google\.com/i.test(url)) {
+      return match;
+    }
+    if (/^(?:https?:)?\/\/(?:www\.)?(?:solarsquare\.in|shreerudrapower\.com)(\/[^"'\s>]*)?$/i.test(url)) {
+      const pathMatch = url.match(/^(?:https?:)?\/\/(?:www\.)?(?:solarsquare\.in|shreerudrapower\.com)(\/[^"'\s>]*)?$/i);
+      const localPath = pathMatch && pathMatch[1] ? pathMatch[1] : '/';
+      return `<a${pre}href="${localPath}"${post}>`;
+    }
+    if (/solarsquare|solar\.square|keka\.com|com\.sse\.consumer|facebook\.com|instagram\.com|youtube\.com|youtu\.be|linkedin\.com|twitter\.com|x\.com|share\.google|entrepreneur\.com|fortuneindia\.com|inc42\.com|economictimes|play\.google\.com|apps\.apple\.com/i.test(url)) {
+      const cleanPre = pre.replace(/\btarget=["']?_blank["']?/gi, '');
+      const cleanPost = post.replace(/\btarget=["']?_blank["']?/gi, '');
+      return `<a${cleanPre}href="#"${cleanPost}>`;
+    }
+    return match;
+  });
+
   // Title tag
   res = res.replace(/<title>.*?<\/title>/i, (match) => {
     return match.replace(/SolarSquare/gi, 'Shree Rudra Power Systems');
