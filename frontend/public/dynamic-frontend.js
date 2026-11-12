@@ -98,6 +98,7 @@
     if (footerMain && footerLoc && footerLoc.parentNode && (footerMain.compareDocumentPosition(footerLoc) & Node.DOCUMENT_POSITION_FOLLOWING)) {
       footerLoc.parentNode.insertBefore(footerMain, footerLoc.nextSibling);
     }
+    balanceFooterLocations();
     cleanAllSolarSquareLinks();
     updateContactInfoDOM();
     setupPincodeLookup();
@@ -227,6 +228,42 @@
       }
     });
     document.title = 'Shree Rudra Power Systems - Rooftop Solar Solutions';
+  }
+
+  // 1b. Balance Footer Locations Grid (6 equal columns x 4 cities each)
+  function balanceFooterLocations() {
+    const row = document.querySelector('#footer-locations-href .footer-locations-block, .footer-locations .footer-locations-block');
+    if (!row) return;
+
+    const existingLinks = {};
+    row.querySelectorAll('a').forEach(a => {
+      const key = (a.textContent || '').trim().toLowerCase();
+      if (key && a.getAttribute('href') && a.getAttribute('href') !== '#') {
+        existingLinks[key] = a.getAttribute('href');
+      }
+    });
+
+    const columns = [
+      { state: 'DELHI NCR', cities: ['Delhi', 'Gurugram', 'NCR', 'Faridabad'] },
+      { state: 'GUJARAT', cities: ['Ahmedabad', 'Anand', 'Gandhinagar', 'Surat'] },
+      { state: 'MADHYA PRADESH', cities: ['Bhopal', 'Gwalior', 'Indore', 'Jabalpur'] },
+      { state: 'MAHARASHTRA', cities: ['Mumbai', 'Pune', 'Nagpur', 'Nashik'] },
+      { state: 'RAJASTHAN', cities: ['Ajmer', 'Jaipur', 'Jodhpur', 'Kota'] },
+      { state: 'UTTAR PRADESH', cities: ['Lucknow', 'Noida', 'Kanpur', 'Varanasi'] }
+    ];
+
+    row.innerHTML = columns.map(col => {
+      const items = col.cities.map(city => {
+        const href = existingLinks[city.toLowerCase()] || `/rooftop-solar-in-${city.toLowerCase()}/`;
+        return `<li><a href="${href}">${city}</a></li>`;
+      }).join('');
+      return `
+        <div class="col-md-2 col-6 footer-locations-content">
+          <p class="location-bold"><a href="#" style="white-space:nowrap;">${col.state}</a></p>
+          <ul>${items}</ul>
+        </div>
+      `;
+    }).join('');
   }
 
   // 2. Clean all external SolarSquare & third-party redirect links across the page
