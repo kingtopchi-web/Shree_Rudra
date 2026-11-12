@@ -160,11 +160,34 @@
       a.innerText = '+91 ' + TARGET_PHONE;
     });
 
-    const mailLinks = document.querySelectorAll('#footerContactMenu a[href^="mailto:"], .footer a[href^="mailto:"]');
+    const mailLinks = document.querySelectorAll('#footerContactMenu a[href^="mailto:"], .footer a[href^="mailto:"], a[href*="email-protection"], a[href^="mailto:"]');
     mailLinks.forEach(a => {
-      a.setAttribute('href', 'mailto:' + TARGET_EMAIL);
-      a.innerText = TARGET_EMAIL;
+      const href = a.getAttribute('href') || '';
+      const txt = a.textContent || '';
+      if (
+        href.includes('email-protection') ||
+        /solarsquare|welisten|shreerudrapower\.com|\[email/i.test(href + ' ' + txt) ||
+        a.closest('.footer, #footerContactMenu')
+      ) {
+        a.setAttribute('href', 'mailto:' + TARGET_EMAIL);
+        a.innerText = TARGET_EMAIL;
+      }
     });
+
+    document.querySelectorAll('span.__cf_email__').forEach(sp => {
+      sp.textContent = TARGET_EMAIL;
+    });
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const val = node.nodeValue;
+      if (val && /7208979637|9830003000|7030003000|welisten@|@solarsquare\.in/i.test(val)) {
+        node.nodeValue = val
+          .replace(/7208979637|9830003000|7030003000/g, TARGET_PHONE)
+          .replace(/[a-z0-9._%+-]+@(?:solarsquare\.in|shreerudrapower\.com)/gi, TARGET_EMAIL);
+      }
+    }
 
     const addressLinks = document.querySelectorAll('.footer-address a');
     addressLinks.forEach(a => {

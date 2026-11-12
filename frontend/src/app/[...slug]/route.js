@@ -194,10 +194,12 @@ function transformHtml(html) {
   res = res.replace(/70\s*3000\s*3000/g, '+91 8354822499');
   res = res.replace(/(?<!\d)7030003000(?!\d)/g, '8354822499');
   res = res.replace(/(?<!\d)7841853832(?!\d)/g, '8354822499');
+  res = res.replace(/(?<!\d)7208979637(?!\d)/g, '8354822499');
   res = res.replace(/href=["']tel:[^"']*["']/gi, 'href="tel:+918354822499"');
 
-  res = res.replace(/welisten@shreerudrapower\.com/g, 'shreerudrapowersystems@gmail.com');
-  res = res.replace(/welisten@solarsquare\.in/g, 'shreerudrapowersystems@gmail.com');
+  res = res.replace(/<a[^>]*href=["'][^"']*email-protection[^"']*["'][^>]*>[\s\S]*?<\/a>/gi, '<a href="mailto:shreerudrapowersystems@gmail.com">shreerudrapowersystems@gmail.com</a>');
+  res = res.replace(/<span[^>]*class=["']?__cf_email__["']?[^>]*>[\s\S]*?<\/span>/gi, 'shreerudrapowersystems@gmail.com');
+  res = res.replace(/[a-z0-9._%+-]+@(?:solarsquare\.in|shreerudrapower\.com)/gi, 'shreerudrapowersystems@gmail.com');
   res = res.replace(/ni\.erauqsralos@netsilew/g, 'shreerudrapowersystems@gmail.com');
   res = res.replace(/<span class=reverse-text[^>]*>.*?<\/span>/gi, 'shreerudrapowersystems@gmail.com');
 
