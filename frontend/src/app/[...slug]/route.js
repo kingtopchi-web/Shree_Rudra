@@ -113,6 +113,28 @@ function fetchAndCacheAsset(assetDomain, assetPath, localPath) {
 function transformHtml(html) {
   let res = html;
 
+  // Rewrite relative & absolute paths for ALL asset domains FIRST before brand text replacement
+  for (const d of KNOWN_DOMAINS) {
+    const escapedDomain = d.replace(/\./g, '\\.');
+    const regex = new RegExp(`(src|href)=["']?(?:\\.\\.\\/)+${escapedDomain}\\/([^"'\\s>]+)["']?`, 'gi');
+    res = res.replace(regex, (match, attr, subPath) => {
+      return `${attr}="/${d}/${subPath}"`;
+    });
+
+    const absRegex = new RegExp(`(src|href)=["']?https?:\\/\\/${escapedDomain}\\/([^"'\\s>]+)["']?`, 'gi');
+    res = res.replace(absRegex, (match, attr, subPath) => {
+      return `${attr}="/${d}/${subPath}"`;
+    });
+  }
+
+  // Temporarily protect asset paths (img src, srcset, data-bg, link href to assets) from brand/phone regexes
+  const protectedUrls = [];
+  res = res.replace(/(?:src|srcset|data-bg|data-src)=["'][^"']*["']|(?:src|data-bg|data-src)=\/(?:cdn\.|website-assets\.|dn5z2jafg7hv0\.|sse-|images\/)[^\s>]+/gi, (m) => {
+    const token = `__PROTECTED_ASSET_${protectedUrls.length}__`;
+    protectedUrls.push(m);
+    return token;
+  });
+
   // Title tag
   res = res.replace(/<title>.*?<\/title>/i, (match) => {
     return match.replace(/SolarSquare/gi, 'Shree Rudra Power Systems');
@@ -129,20 +151,6 @@ function transformHtml(html) {
     const mangled2 = d.replace('solarsquare.in', 'shreerudrapower.com');
     res = res.split(mangled1).join(d);
     res = res.split(mangled2).join(d);
-  }
-
-  // Rewrite relative & absolute paths for ALL asset domains properly preserving attr name (src or href)
-  for (const d of KNOWN_DOMAINS) {
-    const escapedDomain = d.replace(/\./g, '\\.');
-    const regex = new RegExp(`(src|href)=["']?(?:\\.\\.\\/)+${escapedDomain}\\/([^"'\\s>]+)["']?`, 'gi');
-    res = res.replace(regex, (match, attr, subPath) => {
-      return `${attr}="/${d}/${subPath}"`;
-    });
-
-    const absRegex = new RegExp(`(src|href)=["']?https?:\\/\\/${escapedDomain}\\/([^"'\\s>]+)["']?`, 'gi');
-    res = res.replace(absRegex, (match, attr, subPath) => {
-      return `${attr}="/${d}/${subPath}"`;
-    });
   }
 
   // Brand logo
@@ -184,8 +192,8 @@ function transformHtml(html) {
   res = res.replace(/\+919830003000/g, '+918354822499');
   res = res.replace(/98\s*3000\s*3000/g, '+91 8354822499');
   res = res.replace(/70\s*3000\s*3000/g, '+91 8354822499');
-  res = res.replace(/7030003000/g, '8354822499');
-  res = res.replace(/7841853832/g, '8354822499');
+  res = res.replace(/(?<!\d)7030003000(?!\d)/g, '8354822499');
+  res = res.replace(/(?<!\d)7841853832(?!\d)/g, '8354822499');
   res = res.replace(/href=["']tel:[^"']*["']/gi, 'href="tel:+918354822499"');
 
   res = res.replace(/welisten@shreerudrapower\.com/g, 'shreerudrapowersystems@gmail.com');
@@ -195,6 +203,9 @@ function transformHtml(html) {
 
   res = res.replace(/https:\/\/maps\.google\.com\/\?q=1101-B[^"'\s>]+/gi, 'https://maps.google.com/?q=Indira+Nagar,+Lucknow,+Uttar+Pradesh+226016');
   res = res.replace(/>\s*1101-B,[\s\S]*?Maharashtra\s*400058\s*<\/a>/gi, '>Indira Nagar, Lucknow, Uttar Pradesh - 226016</a>');
+
+  // Restore protected asset URLs untouched
+  res = res.replace(/__PROTECTED_ASSET_(\d+)__/g, (_, i) => protectedUrls[Number(i)]);
 
   return res;
 }
