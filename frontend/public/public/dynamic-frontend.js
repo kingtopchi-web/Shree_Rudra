@@ -260,7 +260,129 @@
   }
 
   // 5. 100% Responsive, Interactive Bill Slider (₹500 to ₹10,000)
+  function computeSolarMetrics(bill) {
+    const num = Math.min(10000, Math.max(500, Number(bill) || 3500));
+    let systemKw = 2;
+    if (num >= 7000) systemKw = 5;
+    else if (num >= 5000) systemKw = 4;
+    else if (num >= 3000) systemKw = 3;
+    else if (num >= 2000) systemKw = 2;
+    else systemKw = 1;
+
+    const subsidy = systemKw >= 3 ? 78000 : (systemKw === 2 ? 60000 : 30000);
+    const monthlySavings = Math.round(num * 0.90);
+    const yearlySavings = monthlySavings * 12;
+    const fiveYearSavings = yearlySavings * 5;
+    const savings25Years = yearlySavings * 25;
+    const roofArea = systemKw * 100;
+    const co2Kg = Math.round(systemKw * 1200);
+    const trees = Math.round(systemKw * 55);
+    const evKms = Math.round(systemKw * 8500);
+
+    return {
+      bill: num,
+      systemKw,
+      subsidy,
+      monthlySavings,
+      yearlySavings,
+      fiveYearSavings,
+      savings25Years,
+      roofArea,
+      co2Kg,
+      trees,
+      evKms
+    };
+  }
+
+  function updateSolarCalculatorResults(bill) {
+    const scData = document.getElementById('mobile-sc-data');
+    if (!scData) return;
+
+    const m = computeSolarMetrics(bill);
+
+    const firstLoader = document.querySelector('.first-sc-loader');
+    const skelLoader = document.getElementById('mobile-skeleton-loader');
+    if (firstLoader) firstLoader.style.display = 'none';
+    if (skelLoader) skelLoader.style.display = 'none';
+    scData.style.display = 'block';
+
+    const brandTitle = scData.querySelector('.savings-title');
+    if (brandTitle && /solarsquare/i.test(brandTitle.textContent)) {
+      brandTitle.textContent = 'Your savings with Shree Rudra Power Systems';
+    }
+
+    const sizeEl = scData.querySelector('.calc-left-bottom .value');
+    if (sizeEl) sizeEl.textContent = String(m.systemKw);
+
+    const roofEl = scData.querySelector('.calc-right-bottom .value');
+    if (roofEl) roofEl.textContent = String(m.roofArea);
+
+    const savingsValues = scData.querySelectorAll('.savings-monthly-yearly .value');
+    if (savingsValues[0]) savingsValues[0].textContent = `₹${m.monthlySavings.toLocaleString('en-IN')}`;
+    if (savingsValues[1]) savingsValues[1].textContent = `₹${m.yearlySavings.toLocaleString('en-IN')}`;
+    if (savingsValues[2]) savingsValues[2].textContent = `₹${m.savings25Years.toLocaleString('en-IN')}`;
+
+    const fiveYrEl = scData.querySelector('.savings-gz .savings-amt');
+    if (fiveYrEl) fiveYrEl.textContent = `₹${m.fiveYearSavings.toLocaleString('en-IN')}`;
+
+    const usageDescs = scData.querySelectorAll('.solar-usage .solar-usage-desc');
+    if (usageDescs[0]) usageDescs[0].textContent = `${m.co2Kg.toLocaleString('en-IN')} Kg`;
+    if (usageDescs[1]) usageDescs[1].textContent = `${m.trees.toLocaleString('en-IN')}`;
+    if (usageDescs[2]) usageDescs[2].textContent = `${m.evKms.toLocaleString('en-IN')} Kms`;
+  }
+
+  function upgradeLegacyMeowSlider() {
+    const meow = document.getElementById('slider-meow');
+    if (!meow || document.getElementById('sr-slider-track')) return;
+
+    if (window.jQuery && window.jQuery.fn && window.jQuery.fn.slider) {
+      try {
+        if (window.jQuery(meow).hasClass('ui-slider')) {
+          window.jQuery(meow).slider('destroy');
+        }
+      } catch (e) {}
+    }
+
+    meow.classList.remove(
+      'ui-slider',
+      'ui-slider-horizontal',
+      'ui-slider-disabled',
+      'ui-state-disabled',
+      'ui-corner-all',
+      'ui-widget',
+      'ui-widget-content'
+    );
+    meow.style.cssText = 'position:relative; width:100%; height:16px; background:transparent; border:none; padding:0; margin:14px 0 10px 0; opacity:1; pointer-events:auto;';
+
+    meow.innerHTML = `
+      <div id="sr-slider-track" style="position:relative; width:100%; height:16px; background:#d1fae5; border-radius:8px; cursor:pointer; user-select:none; touch-action:none; pointer-events:auto;">
+        <div id="sr-slider-fill" style="position:absolute; top:0; left:0; height:100%; width:31.57%; background:#10b981; border-radius:8px; pointer-events:none;"></div>
+        <div id="sr-slider-handle" role="slider" aria-label="Monthly Electricity Bill" aria-valuemin="500" aria-valuemax="10000" aria-valuenow="3500" tabindex="0" style="position:absolute; top:50%; left:31.57%; transform:translate(-50%, -50%); width:36px; height:36px; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.18); cursor:grab; display:flex; align-items:center; justify-content:center; gap:3px; z-index:20; touch-action:none; user-select:none; pointer-events:auto;">
+          <span style="width:2.5px; height:15px; background:#94a3b8; border-radius:2px; display:inline-block; pointer-events:none;"></span>
+          <span style="width:2.5px; height:15px; background:#94a3b8; border-radius:2px; display:inline-block; pointer-events:none;"></span>
+        </div>
+      </div>
+    `;
+
+    if (!document.getElementById('display-amount')) {
+      const tooltipRow = document.querySelector('.silder-form .slider-tooltip');
+      if (tooltipRow) {
+        tooltipRow.style.display = 'flex';
+        tooltipRow.style.alignItems = 'center';
+        tooltipRow.style.gap = '8px';
+        const pill = document.createElement('span');
+        pill.id = 'display-amount';
+        pill.className = 'selected-bill-amount slider-value-box';
+        pill.style.cssText = 'margin-left:auto; font-size:18px; font-weight:800; color:#0284c7; background:#e0f2fe; padding:3px 12px; border-radius:8px; display:inline-block; opacity:1;';
+        pill.textContent = '₹3,500';
+        tooltipRow.appendChild(pill);
+      }
+    }
+  }
+
   function setupBillSlider() {
+    upgradeLegacyMeowSlider();
+
     const track = document.getElementById('sr-slider-track');
     const handle = document.getElementById('sr-slider-handle');
     const fill = document.getElementById('sr-slider-fill');
@@ -269,10 +391,12 @@
     const calcBtn = document.getElementById('calculate-now-calc');
     const rangeInput = document.getElementById('sr-bill-range');
 
-    window.currentElectricityBill = 3500;
+    if (!window.currentElectricityBill || window.currentElectricityBill < 500) {
+      window.currentElectricityBill = 3500;
+    }
 
     function applySliderValue(val, updateUI = true) {
-      const num = Math.min(10000, Math.max(500, Math.round(Number(val) / 250) * 250));
+      const num = Math.min(10000, Math.max(500, Math.round(Number(val) / 100) * 100));
       window.currentElectricityBill = num;
 
       if (amountInput) amountInput.value = num;
@@ -294,7 +418,10 @@
         const pct = Math.max(0, Math.min(1, (num - 500) / (10000 - 500)));
         const pctStr = (pct * 100).toFixed(2) + '%';
         if (fill) fill.style.width = pctStr;
-        if (handle) handle.style.left = pctStr;
+        if (handle) {
+          handle.style.left = pctStr;
+          handle.setAttribute('aria-valuenow', String(num));
+        }
       }
 
       if (calcBtn) {
@@ -303,86 +430,121 @@
         calcBtn.style.cursor = 'pointer';
         calcBtn.style.pointerEvents = 'auto';
       }
+
+      updateSolarCalculatorResults(num);
     }
 
     if (track && handle) {
-      let isDragging = false;
+      if (track.dataset.srBound !== '1') {
+        track.dataset.srBound = '1';
+        let isDragging = false;
 
-      function handleDrag(clientX) {
-        const rect = track.getBoundingClientRect();
-        if (rect.width <= 0) return;
-        const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const val = 500 + ratio * (10000 - 500);
-        applySliderValue(val, true);
-      }
+        function handleDrag(clientX) {
+          const rect = track.getBoundingClientRect();
+          if (rect.width <= 0) return;
+          const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+          const val = 500 + ratio * (10000 - 500);
+          applySliderValue(val, true);
+        }
 
-      // Mouse Drag & Click
-      handle.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        handle.style.cursor = 'grabbing';
-        document.body.style.userSelect = 'none';
-        e.preventDefault();
-      });
+        function startDrag(clientX, targetEl, pointerId) {
+          isDragging = true;
+          handle.style.cursor = 'grabbing';
+          document.body.style.userSelect = 'none';
+          if (typeof clientX === 'number') handleDrag(clientX);
+          if (targetEl && pointerId !== undefined && targetEl.setPointerCapture) {
+            try { targetEl.setPointerCapture(pointerId); } catch (e) {}
+          }
+        }
 
-      track.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        handle.style.cursor = 'grabbing';
-        document.body.style.userSelect = 'none';
-        handleDrag(e.clientX);
-        e.preventDefault();
-      });
-
-      window.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-        handleDrag(e.clientX);
-      });
-
-      window.addEventListener('mouseup', function() {
-        if (isDragging) {
+        function endDrag() {
+          if (!isDragging) return;
           isDragging = false;
-          if (handle) handle.style.cursor = 'grab';
+          handle.style.cursor = 'grab';
           document.body.style.userSelect = '';
         }
-      });
 
-      // Touch Events for Mobile / Tablet
-      handle.addEventListener('touchstart', function(e) {
-        isDragging = true;
-        if (e.touches && e.touches[0]) {
-          handleDrag(e.touches[0].clientX);
+        if (window.PointerEvent) {
+          handle.addEventListener('pointerdown', function(e) {
+            e.preventDefault();
+            startDrag(e.clientX, handle, e.pointerId);
+          });
+          track.addEventListener('pointerdown', function(e) {
+            e.preventDefault();
+            startDrag(e.clientX, track, e.pointerId);
+          });
+          window.addEventListener('pointermove', function(e) {
+            if (!isDragging) return;
+            handleDrag(e.clientX);
+          });
+          window.addEventListener('pointerup', endDrag);
+          window.addEventListener('pointercancel', endDrag);
+        } else {
+          handle.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            startDrag(e.clientX);
+          });
+          track.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            startDrag(e.clientX);
+          });
+          window.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            handleDrag(e.clientX);
+          });
+          window.addEventListener('mouseup', endDrag);
+
+          handle.addEventListener('touchstart', function(e) {
+            if (e.touches && e.touches[0]) startDrag(e.touches[0].clientX);
+          }, { passive: true });
+          track.addEventListener('touchstart', function(e) {
+            if (e.touches && e.touches[0]) startDrag(e.touches[0].clientX);
+          }, { passive: true });
+          window.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            if (e.touches && e.touches[0]) handleDrag(e.touches[0].clientX);
+          }, { passive: true });
+          window.addEventListener('touchend', endDrag);
         }
-      }, { passive: true });
 
-      track.addEventListener('touchstart', function(e) {
-        isDragging = true;
-        if (e.touches && e.touches[0]) {
-          handleDrag(e.touches[0].clientX);
-        }
-      }, { passive: true });
+        handle.addEventListener('keydown', function(e) {
+          const cur = window.currentElectricityBill || 3500;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            applySliderValue(cur + 100, true);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            applySliderValue(cur - 100, true);
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            applySliderValue(500, true);
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            applySliderValue(10000, true);
+          }
+        });
+      }
 
-      window.addEventListener('touchmove', function(e) {
-        if (!isDragging) return;
-        if (e.touches && e.touches[0]) {
-          handleDrag(e.touches[0].clientX);
-        }
-      }, { passive: true });
-
-      window.addEventListener('touchend', function() {
-        isDragging = false;
-      });
-
-      // Set initial ₹3,500
-      applySliderValue(3500, true);
+      applySliderValue(window.currentElectricityBill || 3500, true);
     } else if (rangeInput) {
-      rangeInput.addEventListener('input', function() {
-        applySliderValue(this.value, false);
-      });
-      rangeInput.addEventListener('change', function() {
-        applySliderValue(this.value, false);
-      });
-      applySliderValue(rangeInput.value || 3500, false);
+      if (rangeInput.dataset.srBound !== '1') {
+        rangeInput.dataset.srBound = '1';
+        rangeInput.addEventListener('input', function() {
+          applySliderValue(this.value, false);
+        });
+        rangeInput.addEventListener('change', function() {
+          applySliderValue(this.value, false);
+        });
+      }
+      applySliderValue(rangeInput.value || window.currentElectricityBill || 3500, false);
     }
   }
+
+  // Re-reconcile slider after deferred legacy scripts (cfb1f.js / script5152.js) finish
+  window.addEventListener('load', function() {
+    setTimeout(setupBillSlider, 150);
+    setTimeout(setupBillSlider, 600);
+  });
 
   // 6. Bind Solar Calculator Submission
   function bindSolarCalculator() {
