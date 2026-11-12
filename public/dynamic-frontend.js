@@ -93,6 +93,11 @@
     document.querySelectorAll('.footer-logo .brand-logo, .footer-brand-image img, footer img.brand-logo').forEach(img => {
       img.style.setProperty('filter', 'brightness(0) invert(1)', 'important');
     });
+    const footerMain = document.querySelector('div.footer');
+    const footerLoc = document.getElementById('footer-locations-href') || document.querySelector('div.footer-locations');
+    if (footerMain && footerLoc && footerLoc.parentNode && (footerMain.compareDocumentPosition(footerLoc) & Node.DOCUMENT_POSITION_FOLLOWING)) {
+      footerLoc.parentNode.insertBefore(footerMain, footerLoc.nextSibling);
+    }
     cleanAllSolarSquareLinks();
     updateContactInfoDOM();
     setupPincodeLookup();
