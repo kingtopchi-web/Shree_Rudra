@@ -258,6 +258,10 @@
           padding-top: 32px !important;
           padding-bottom: 32px !important;
         }
+        img[src*="Frame+1171276997"],
+        img[src*="Frame%201171276997"] {
+          display: none !important;
+        }
         .read-more-section {
           padding-top: 14px !important;
           padding-bottom: 10px !important;
@@ -1230,71 +1234,135 @@ Hello Shree Rudra Power Systems, I checked my solar savings and want to book a F
 
   // 8. Bind ALL Consultation and Lead forms to WhatsApp
   function bindAllFormsToWhatsApp() {
-    const forms = document.querySelectorAll('form#leadForm, form.leadForm, form.book-consultation-form, form[action*="lead"], form.consultation-form, form.contact-form');
-    
-    forms.forEach(form => {
-      form.addEventListener('submit', async function(e) {
+    const skipFormIds = new Set(['scalcPageForm', 'scalcPageFormComp']);
+
+    function formatLabel(raw) {
+      return raw
+        .replace(/^(ec_|pmSurya|offcanvas_)/i, '')
+        .replace(/(_desktop|_select)$/i, '')
+        .replace(/[_-]+/g, ' ')
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/\b\w/g, c => c.toUpperCase())
+        .trim();
+    }
+
+    function handleUniversalSubmit(form, e) {
+      if (e) {
         e.preventDefault();
         e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+      }
 
-        const nameInput = form.querySelector('input[name="full_name"], input[name="name"], input#full_name');
-        const phoneInput = form.querySelector('input[name="whatsapp_number"], input[name="phone"], input[name="mobile"], input#whatsapp_number');
-        const pinInput = form.querySelector('input[name="pincode"], input[name="pin"], input#pincode');
-        const billInput = form.querySelector('input[name="monthly_bill"], input#monthly_bill, select[name="bill"]');
-        const msgInput = form.querySelector('textarea, input[name="message"]');
+      const nameInput = form.querySelector('input[name="full_name"], input[name="fullName"], input[name="name"], input[name="ec_full_name"], input[name="full_name_desktop"], input#full_name, input#pmSuryaFullName, input#homes_calc_name, input[placeholder*="Name" i]');
+      const phoneInput = form.querySelector('input[name="whatsapp_number"], input[name="whatsapp"], input[name="wa_number"], input[name="wa_number_desktop"], input[name="ec_whatsapp_number"], input[name="mob_no"], input[name="phone"], input[name="mobile"], input[type="tel"]:not([name*="bill" i]), input#whatsapp_number, input#pmSuryaWhatsapp, input#homes_calc_phone');
+      const pinInput = form.querySelector('input[name="pincode"], input[name="pinCode"], input[name="pin"], input#pincode, input#pmSuryaPinCode');
+      const billInput = form.querySelector('input[name="monthly_bill"], input#monthly_bill, select[name="bill"], select[name="monthly_bill"]');
 
-        const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Solar Customer';
-        const phone = phoneInput ? phoneInput.value.trim() : '';
-        const pincode = pinInput && pinInput.value.trim() ? pinInput.value.trim() : (window.currentSolarPincode || '227406');
-        const bill = billInput && billInput.value.trim() ? billInput.value.trim() : (window.currentElectricityBill ? `₹${window.currentElectricityBill}` : '₹3500+');
-        const location = window.currentSolarDistrict || 'Indira Nagar, Lucknow / UP';
-        const msg = msgInput ? msgInput.value.trim() : '';
+      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Solar Customer';
+      const phoneRaw = phoneInput ? phoneInput.value.trim() : '';
+      const phoneDigits = phoneRaw.replace(/\D/g, '');
+      const pincode = pinInput && pinInput.value.trim() ? pinInput.value.trim() : (window.currentSolarPincode || '227406');
+      const billVal = billInput && billInput.value.trim() ? billInput.value.trim() : (window.currentElectricityBill ? `₹${window.currentElectricityBill}` : '');
+      const location = window.currentSolarDistrict || 'Indira Nagar, Lucknow / UP';
 
-        if (!phone || phone.length < 10) {
-          alert('कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें (Please enter a valid 10-digit mobile number)');
-          if (phoneInput) phoneInput.focus();
-          return;
+      if (phoneInput && phoneDigits.length < 10) {
+        alert('कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें (Please enter a valid 10-digit mobile number)');
+        phoneInput.focus();
+        return;
+      }
+
+      // Collect any extra fields (company_name, housing_society_name, city, state, profession, visit_date, visit_time, nearest_centre, email, message, radios)
+      const handledEls = new Set([nameInput, phoneInput, pinInput, billInput].filter(Boolean));
+      const extraDetails = [];
+      const seenKeys = new Set();
+
+      const allInputs = form.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="checkbox"]), select, textarea');
+      allInputs.forEach(el => {
+        if (handledEls.has(el)) return;
+        if (el.type === 'radio') {
+          if (!el.checked) return;
         }
+        const val = (el.value || '').trim();
+        if (!val) return;
+        const key = el.name || el.id || el.placeholder || 'Detail';
+        if (seenKeys.has(key)) return;
+        seenKeys.add(key);
+        extraDetails.push({ label: formatLabel(key), value: val });
+      });
 
-        try {
-          fetch('/api/leads', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name,
-              phone,
-              pincode,
-              city: location,
-              monthlyBill: bill,
-              message: msg,
-              source: 'Website Form'
-            })
-          });
-        } catch (err) {}
+      // Also check active toggle/dropdown buttons inside housing-society or calculator forms
+      const activeBillBtn = form.querySelector('.bill-btn.active, .active[data-bill], .selected-bill');
+      const activeAgmBtn = form.querySelector('.agm-btn.active, .selected-agm');
+      if (activeAgmBtn && activeAgmBtn.innerText.trim()) {
+        extraDetails.push({ label: 'AGM Approval Status', value: activeAgmBtn.innerText.trim() });
+      }
+      const finalBill = billVal || (activeBillBtn ? activeBillBtn.innerText.trim() : '₹3500+');
 
-        let waText = 
+      const extraSummary = extraDetails.map(d => `${d.label}: ${d.value}`).join(' | ');
+
+      try {
+        fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone: phoneRaw || 'Not Provided',
+            pincode,
+            city: location,
+            monthlyBill: finalBill,
+            message: extraSummary,
+            source: `Website Form (${window.location.pathname})`
+          })
+        });
+      } catch (err) {}
+
+      let waText =
 `☀️ *New Solar Rooftop Inquiry*
 🏢 *To:* Shree Rudra Power Systems
+📄 *Page:* ${window.location.pathname}
 ━━━━━━━━━━━━━━━━━━
 👤 *Customer Name:* ${name}
-📱 *WhatsApp Number:* ${phone}
+📱 *WhatsApp Number:* ${phoneRaw || 'Not Provided'}
 📍 *Pincode / Area:* ${pincode} (${location})
-⚡ *Monthly Electricity Bill:* ${bill}`;
+⚡ *Monthly Electricity Bill:* ${finalBill}`;
 
-        if (msg) {
-          waText += `\n📝 *Inquiry Details:* ${msg}`;
+      extraDetails.forEach(d => {
+        waText += `\n📌 *${d.label}:* ${d.value}`;
+      });
+      waText += `\n━━━━━━━━━━━━━━━━━━\nHello Shree Rudra Power Systems, I would like to get a free solar quotation and site survey. Please contact me.`;
+
+      const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
+      window.__srLastWaUrl = waUrl;
+      window.open(waUrl, '_blank');
+
+      alert('धन्यवाद! आपकी इन्क्वायरी सफलतापूर्वक दर्ज हो गई है और व्हाट्सऐप पर भेज दी गई है।\n(Thank you! Your details have been forwarded to Shree Rudra Power Systems on WhatsApp.)');
+      form.reset();
+
+      const closeBtn = form.closest('.modal')?.querySelector('[data-bs-dismiss="modal"]') ||
+                       form.closest('.modal')?.querySelector('.btn-close');
+      if (closeBtn) closeBtn.click();
+    }
+
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      if (skipFormIds.has(form.id) || form.getAttribute('role') === 'search') return;
+      if (form.dataset.srWaBound === '1') return;
+      const hasLeadField = form.querySelector('input[type="tel"], input[name*="name" i], input[name*="phone" i], input[name*="whatsapp" i], input[name*="wa_number" i], input[name*="mob" i], textarea');
+      if (!hasLeadField) return;
+
+      form.dataset.srWaBound = '1';
+      form.addEventListener('submit', function(e) {
+        handleUniversalSubmit(form, e);
+      }, true);
+
+      // Some forms (Experience Centre, Referral) use type="button" on their primary CTA button
+      form.querySelectorAll('button[type="button"]').forEach(btn => {
+        const txt = (btn.innerText || '').trim();
+        if (/^(Book a Free Demo|Refer Now|Submit|Get Started|Send|Continue|Earn with us)/i.test(txt)) {
+          btn.addEventListener('click', function(e) {
+            handleUniversalSubmit(form, e);
+          }, true);
         }
-        waText += `\n━━━━━━━━━━━━━━━━━━\nHello Shree Rudra Power Systems, I would like to get a free solar quotation and site survey. Please contact me.`;
-
-        const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
-        window.open(waUrl, '_blank');
-
-        alert('धन्यवाद! आपकी इन्क्वायरी सफलतापूर्वक दर्ज हो गई है और व्हाट्सऐप पर भेज दी गई है।\n(Thank you! Your details have been forwarded to Shree Rudra Power Systems on WhatsApp.)');
-        form.reset();
-
-        const closeBtn = form.closest('.modal')?.querySelector('[data-bs-dismiss="modal"]') || 
-                         form.closest('.modal')?.querySelector('.btn-close');
-        if (closeBtn) closeBtn.click();
       });
     });
   }
