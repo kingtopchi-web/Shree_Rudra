@@ -143,6 +143,18 @@
           content: none !important;
           border: none !important;
         }
+        header .divider,
+        #masthead .divider,
+        .site-header .divider,
+        .navbar-wrapper .divider,
+        nav.navbar .divider,
+        .navbar .divider,
+        .navbar-light .divider {
+          display: none !important;
+          height: 0 !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
         nav.navbar .container {
           min-height: 64px !important;
           align-items: center !important;
