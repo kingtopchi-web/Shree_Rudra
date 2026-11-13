@@ -307,6 +307,58 @@
           padding-top: 28px !important;
           padding-bottom: 28px !important;
         }
+        /* Fix commercial quote section review-block overlap */
+        .cm-section-2 {
+          background-size: cover !important;
+          background-position: center !important;
+          padding-top: 80px !important;
+          padding-bottom: 60px !important;
+          margin-top: 0 !important;
+          position: relative !important;
+          z-index: 2 !important;
+        }
+        .cm-section-2 .sse-review-block {
+          padding-top: 40px !important;
+          padding-bottom: 20px !important;
+          margin-top: 0 !important;
+        }
+        .cm-section-2 .sse-review-content {
+          margin-top: 0 !important;
+          padding-top: 10px !important;
+          position: relative !important;
+          z-index: 3 !important;
+        }
+        .cm-section-2 .sse-reviewer-quotes-1 {
+          left: -48% !important;
+          top: 1rem !important;
+        }
+        .cm-section-2 .sse-reviewer-quotes-2 {
+          right: -48% !important;
+          top: -4rem !important;
+        }
+        .cm-section-2 .sse-reviewer {
+          margin-top: -3.5rem !important;
+          position: relative !important;
+          z-index: 3 !important;
+        }
+        @media (max-width: 768px) {
+          .cm-section-2 {
+            padding-top: 50px !important;
+            padding-bottom: 40px !important;
+          }
+          .cm-section-2 .sse-reviewer-quotes-1 {
+            left: -1rem !important;
+            top: 0 !important;
+          }
+          .cm-section-2 .sse-reviewer-quotes-2 {
+            right: -1rem !important;
+            top: -1.5rem !important;
+            left: auto !important;
+          }
+          .cm-section-2 .sse-reviewer {
+            margin-top: 1rem !important;
+          }
+        }
         .cm-section-7 .testimonials-slider-desktop,
         .cm-section-7 .card-wrapper {
           margin-bottom: 12px !important;
