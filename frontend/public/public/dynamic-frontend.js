@@ -1261,9 +1261,8 @@ Hello Shree Rudra Power Systems, I checked my solar savings and want to book a F
       const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Solar Customer';
       const phoneRaw = phoneInput ? phoneInput.value.trim() : '';
       const phoneDigits = phoneRaw.replace(/\D/g, '');
-      const pincode = pinInput && pinInput.value.trim() ? pinInput.value.trim() : (window.currentSolarPincode || '227406');
+      const rawPin = pinInput && pinInput.value.trim() ? pinInput.value.trim() : '';
       const billVal = billInput && billInput.value.trim() ? billInput.value.trim() : (window.currentElectricityBill ? `₹${window.currentElectricityBill}` : '');
-      const location = window.currentSolarDistrict || 'Indira Nagar, Lucknow / UP';
 
       if (phoneInput && phoneDigits.length < 10) {
         alert('कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें (Please enter a valid 10-digit mobile number)');
@@ -1296,9 +1295,18 @@ Hello Shree Rudra Power Systems, I checked my solar savings and want to book a F
       if (activeAgmBtn && activeAgmBtn.innerText.trim()) {
         extraDetails.push({ label: 'AGM Approval Status', value: activeAgmBtn.innerText.trim() });
       }
-      const finalBill = billVal || (activeBillBtn ? activeBillBtn.innerText.trim() : '₹3500+');
+      const finalBill = billVal || (activeBillBtn ? activeBillBtn.innerText.trim() : '');
 
       const extraSummary = extraDetails.map(d => `${d.label}: ${d.value}`).join(' | ');
+
+      // Resolve area / location ONLY if user actually provided pincode or address field
+      let resolvedArea = '';
+      if (rawPin && rawPin.length >= 2) {
+        const pinMatch = PIN_PREFIX_MAP[rawPin] || PIN_PREFIX_MAP[rawPin.substring(0, 3)] || PIN_PREFIX_MAP[rawPin.substring(0, 2)];
+        if (pinMatch) {
+          resolvedArea = `${pinMatch.district}, ${pinMatch.state}`;
+        }
+      }
 
       try {
         fetch('/api/leads', {
@@ -1307,8 +1315,8 @@ Hello Shree Rudra Power Systems, I checked my solar savings and want to book a F
           body: JSON.stringify({
             name,
             phone: phoneRaw || 'Not Provided',
-            pincode,
-            city: location,
+            pincode: rawPin,
+            city: resolvedArea,
             monthlyBill: finalBill,
             message: extraSummary,
             source: `Website Form (${window.location.pathname})`
@@ -1322,9 +1330,15 @@ Hello Shree Rudra Power Systems, I checked my solar savings and want to book a F
 📄 *Page:* ${window.location.pathname}
 ━━━━━━━━━━━━━━━━━━
 👤 *Customer Name:* ${name}
-📱 *WhatsApp Number:* ${phoneRaw || 'Not Provided'}
-📍 *Pincode / Area:* ${pincode} (${location})
-⚡ *Monthly Electricity Bill:* ${finalBill}`;
+📱 *WhatsApp Number:* ${phoneRaw || 'Not Provided'}`;
+
+      if (rawPin) {
+        waText += resolvedArea ? `\n📍 *Pincode / Area:* ${rawPin} (${resolvedArea})` : `\n📍 *Pincode:* ${rawPin}`;
+      }
+
+      if (finalBill) {
+        waText += `\n⚡ *Monthly Electricity Bill:* ${finalBill}`;
+      }
 
       extraDetails.forEach(d => {
         waText += `\n📌 *${d.label}:* ${d.value}`;
