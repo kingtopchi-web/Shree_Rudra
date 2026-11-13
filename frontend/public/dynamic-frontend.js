@@ -176,12 +176,82 @@
           min-height: 64px !important;
           align-items: center !important;
         }
+        /* ==================================================== */
+        /* RESPONSIVE & MOBILE / TABLET OVERFLOW PREVENTION */
+        /* ==================================================== */
+        html,
+        body {
+          overflow-x: hidden !important;
+          width: 100% !important;
+          max-width: 100vw !important;
+          position: relative;
+        }
+
+        /* Prevent off-canvas mobile menus from overflowing before slide-in */
+        #mobileNav,
+        .mobileNav,
+        .offcanvas,
+        .side-menu-wrapper {
+          max-width: 100vw !important;
+          overflow-x: hidden !important;
+        }
+
+        /* Prevent sliders, slick carousels and cards from stretching document width */
+        .slick-slider,
+        .slick-list,
+        .in-news-slider,
+        .testimonials-slider,
+        .blogs-slider,
+        .slider-wrapper,
+        .card-wrapper {
+          overflow: hidden !important;
+          max-width: 100% !important;
+        }
+
+        /* Fix image overflow on mobile/tablet (e.g. /about-us img3) */
+        img,
+        video,
+        canvas,
+        svg {
+          max-width: 100% !important;
+          height: auto;
+        }
+
+        .general.img3 {
+          max-width: 100% !important;
+        }
+
+        /* Fluid typography & touch targets for mobile */
         @media (max-width: 768px) {
           nav.navbar,
           .navbar.navbar-expand-lg {
-            min-height: 76px !important;
-            padding-top: 8px !important;
-            padding-bottom: 8px !important;
+            min-height: 72px !important;
+            padding-top: 6px !important;
+            padding-bottom: 6px !important;
+          }
+          nav.navbar .navbar-brand img,
+          nav.navbar img {
+            max-height: 48px !important;
+            width: auto !important;
+          }
+          nav.navbar .btn-open-lead-form,
+          .signup-electricity-header-right-corner-button {
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+          }
+          /* Adjust large headings so they don't break */
+          h1, .h1 {
+            font-size: clamp(24px, 6vw, 36px) !important;
+            line-height: 1.25 !important;
+          }
+          h2, .h2 {
+            font-size: clamp(20px, 5vw, 28px) !important;
+            line-height: 1.3 !important;
+          }
+          /* Ensure modal & dialogs fit perfectly without horizontal scroll */
+          .modal-dialog {
+            margin: 0.5rem auto !important;
+            max-width: calc(100vw - 1rem) !important;
           }
         }
         .get-solar-section,
