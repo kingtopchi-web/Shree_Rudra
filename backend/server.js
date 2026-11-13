@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -6,10 +7,16 @@ const { resolvePincode } = require('./server/pincodes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || '918354822499';
+const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || 'shreerudrapowersystems@gmail.com';
+const SUPPORT_PHONE = process.env.SUPPORT_PHONE || '8354822499';
+const OFFICE_ADDRESS = process.env.OFFICE_ADDRESS || 'Indira Nagar, Lucknow, Uttar Pradesh - 226016';
+const SESSION_SECRET = process.env.SESSION_SECRET || 'sr-admin-session-token';
 
-// Enable CORS for Next.js frontend (port 3000) and any local development port
+// Enable CORS
 app.use(cors({
-  origin: '*',
+  origin: [FRONTEND_URL, 'http://localhost:3000', 'http://127.0.0.1:3000', '*'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -80,7 +87,17 @@ app.post('/api/auth/customer-login', (req, res) => {
 
 // 1. Settings & Branding
 app.get('/api/settings', (req, res) => {
-  res.json({ success: true, data: db.getDb().settings });
+  const currentSettings = db.getDb().settings || {};
+  res.json({
+    success: true,
+    data: {
+      ...currentSettings,
+      whatsappNumber: WHATSAPP_NUMBER,
+      phone: SUPPORT_PHONE,
+      email: SUPPORT_EMAIL,
+      address: OFFICE_ADDRESS
+    }
+  });
 });
 
 // Pincode Resolver
